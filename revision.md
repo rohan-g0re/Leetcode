@@ -40,7 +40,7 @@ greater <pair<int, int>>
 ####### to do 
 1. Container with most water 
 2. Longest substring wo repeating characters
-3. Rotate arrray by k positions
+3. 
 4. move zeroes 
 5. second largest element in array without sorting
 6. Next permutation
