@@ -44,7 +44,7 @@ greater <pair<int, int>>
 4. move zeroes 
 5. second largest element in array without sorting
 6. Next permutation
-7. max subarrray sum
+7. max subarrray sum ***
 8. Majority element n/3
-9. max prod sub array 
+9.  
 10. number of inversions
