@@ -41,10 +41,10 @@ greater <pair<int, int>>
 1. Container with most water 
 2. Longest substring wo repeating characters
 3. 
-4. move zeroes 
+4. **move zeroes**
 5. second largest element in array without sorting
 6. Next permutation
-7. max subarrray sum ***
+7. 
 8. Majority element n/3
 9.  
 10. number of inversions
