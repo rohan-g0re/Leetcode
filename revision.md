@@ -17,12 +17,24 @@
     key --> sorted word
     value --> vector of original words that are made from alphabets in the key
 
-## HEAP Syntax 
-
+## HEAP Syntax - MIN_HEAP 
+```cpp
 priority_queue <pair<int, int>,
 vector<pair<int, int>,
 greater <pair<int, int>>
 > min_heap;
+```
+
+## HEAP Syntax - MAX_HEAP 
+```cpp
+
+// The default is max heap so dont need to declare extras stuff
+
+priority_queue <pair<int, int>> max_heap;
+
+```
+
+
 
 **JUST LIKE MAP, WE CANT INITIALIZE HEAP WITH A PRE_DEFINED SIZE --> and so there will always be some other way of capping the size we are working on**
 
@@ -42,9 +54,9 @@ greater <pair<int, int>>
 2. Longest substring wo repeating characters
 3. 
 4. 
-5. second largest element in array without sorting
-6. Next permutation
+5. 
+6. **Next permutation**
 7. 
-8. Majority element n/3
+8. 
 9.  
 10. number of inversions
