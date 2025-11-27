@@ -58,7 +58,7 @@ priority_queue <pair<int, int>> max_heap;
 ###### to do
 
 1. Container with most water
-2. Longest substring wo repeating characters
+2. **Longest substring wo repeating characters**
 3. 
 4. 
 5. 
@@ -66,4 +66,4 @@ priority_queue <pair<int, int>> max_heap;
 7. 
 8. 
 9. 
-10. **number of inversions**
+10. count number of inversions
