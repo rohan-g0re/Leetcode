@@ -26,7 +26,10 @@ priority_queue <pair<int, int>> max_heap;
 
 ## PATTERNS to study :
 
-1. how do we generate all possible subarrays
+1. how do we generate all possible subarrays --> striver videos
+2. optimizing product and sums of subarrays from n^3 to n^2 using rolling sum/produc
+3. how to use prefix/suffix logic for O(n) traversal
+4. 
 
 ## Interesting stuff
 
@@ -49,16 +52,3 @@ priority_queue <pair<int, int>> max_heap;
 
 - **IT IS NOT NECESSARY that everytime the 2 pointer approach should start from either ends**
 - Here it starts like a simple **i-j** which means i is lagging pointer to j
-
-###### to do
-
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-10. count number of inversions
