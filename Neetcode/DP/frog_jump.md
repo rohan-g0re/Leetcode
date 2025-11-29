@@ -126,18 +126,46 @@ class Solution {
 
 
 
+## Approach 4: SPace optimized tabulation 
 
 
+```cpp
 
+class Solution {
+  public:
+  
+      
+    int minCost(vector<int>& height) {
+        
+        int n = height.size();
+        
+        if (n == 1) return 0;
 
+        int prev2 = 0;
+        int prev1 = abs (height[1] - height[0]);
+        
+        
+        
+        int current = 0; 
+        
+        for (int i = 2; i < n; i++){
+            
+            int left = prev1+ abs(height[i-1] - height[i]);
+            int right = prev2 + abs(height[i-2] - height[i]);
+            current = min (left, right);
+            
+            
+            prev2 = prev1;
+            
+            prev1 = current;
+        }
+        
+        return prev1;
 
+// submitting prev1 bcoz if n==2 --> it does not enter the loop --> and in that case we have anser in prev1
+// also for normal cases it does not matter since "prev1 = current" at the end of every loop iteration  
+        
+    }
+};
 
-
-
-
-
-
-
-
-
-
+```
