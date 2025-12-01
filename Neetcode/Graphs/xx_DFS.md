@@ -33,7 +33,7 @@ vector <int> DFSonGraph (int V, vector <int> adj[]){
             // 3.1 if the neighbor is NOT IN STACK ( or has never been) then  
 
             if (visited[neighbor] != 1){
-                
+              
                 // 3.2 add it in stack and mark visited
 
                 stack.push(neighbor);
@@ -48,7 +48,6 @@ vector <int> DFSonGraph (int V, vector <int> adj[]){
 }
 
 ```
-
 
 ## DFS --> DEPTH FIRST SEARCH (recursive)
 
@@ -90,4 +89,5 @@ vector <int> DFSonGraph (int V, vector <int> adj[]){
 }
 
 ```
-TC --> Undirected Graph --> O (N) * 2 x E 
+
+TC --> O (V + 2E)
