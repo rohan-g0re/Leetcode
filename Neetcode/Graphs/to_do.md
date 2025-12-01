@@ -1,0 +1,4 @@
+- Basics --> Lectures: 1-12  --> Problems: 14, 16
+- Detect Cycles in Graph --> Lectures: 17-23 --> Problems: 24, 26, 27
+- Djikstras --> Lectures: 33-35 --> Problems: 36, 37, 38
+- MST --> Lectures: 44-47 --> Problems: 49
