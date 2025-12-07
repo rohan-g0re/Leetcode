@@ -1,11 +1,11 @@
-## Approach 1 --> direclt modifying previous version of question
+## Approach 1 --> directly modifying previous version of question
 
 ```cpp
 class Solution {
 public:
 
     int helper (vector<int>& temp){
-        
+      
         int n = temp.size();
 
         if (n == 0) return 0;
@@ -25,7 +25,7 @@ public:
             prev1 = curr;
 
         }
-        
+      
         return prev1;
     }
 
@@ -46,7 +46,7 @@ public:
 
         return max(option1, option2);
 
-        
+      
     }
 };
 ```
