@@ -7,7 +7,7 @@ class Solution {
 private: 
 
     int helper (int index1, int index2, string text1, string text2){
-        
+      
         // STEP 1: Base cases
 
         if (index1 < 0 || index2 < 0) return 0;
@@ -35,9 +35,7 @@ public:
 
 ```
 
-
 ## Approach 2: Recursion with Memoization
-
 
 ```cpp
 
@@ -47,7 +45,7 @@ private:
 
     int helper (int index1, int index2, string text1, string text2, 
         vector<vector<int>>& dp_table){
-        
+      
         // STEP 1: Base cases
 
         if (index1 < 0 || index2 < 0) return 0;
@@ -59,11 +57,11 @@ private:
         // STEP 1,2: Base case + LOGIC --> MATCH
 
         if (text1[index1] == text2[index2]){
-            
+          
             dp_table[index1][index2] = 1 + helper(index1- 1, index2 - 1, text1, text2, dp_table);
 
             return dp_table[index1][index2];
-            
+          
         }
 
         // STEP 2: LOGIC --> NOT MATCH --> split into 2 shifts
@@ -81,7 +79,7 @@ private:
 public:
     int longestCommonSubsequence(string text1, string text2) {
 
-        
+      
         int m = text1.size();
         int n = text2.size();
 
@@ -93,8 +91,7 @@ public:
 
 ```
 
-
-## Approach 3: Tabulatio
+## Approach 3: Tabulation
 
 ## NEW LEARNING --> SHIFTING INDEX TO MAKE OUR PREVIOUS BASE CASE LOGICS WORK
 
@@ -103,7 +100,7 @@ public:
 class Solution {
 public:
     int longestCommonSubsequence(string text1, string text2) {
-        
+      
         int m = text1.size();
         int n = text2.size();
 
@@ -119,21 +116,21 @@ public:
         }
 
         for (int index1 = 1; index1 < m + 1; index1++){
-            
+          
             for (int index2 = 1; index2 < n + 1; index2++){
-                
+              
                 // MATCH
 
-                if (text1[index1 - 1] == text2[index2 - 1]){            
+                if (text1[index1 - 1] == text2[index2 - 1]){          
                     dp_table[index1][index2] = 1 + dp_table[index1 - 1][index2 - 1];
                 }
 
                 // NOT MATCH 
-                
+              
                 else{
                    dp_table[index1][index2]  = 0 + max (dp_table[index1 - 1][index2] , 
                                             dp_table[index1][index2 - 1]  );
-                    
+                  
                 }
 
             }

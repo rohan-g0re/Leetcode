@@ -1,6 +1,4 @@
-
-
-## Approach 1: Recursion --> TLE
+#### Approach previous attempt: Recursion --> TLE
 
 ```cpp
 class Solution {
@@ -34,13 +32,12 @@ public:
 
         // logic 
 
-
-        //  "PICK" the current element
+       //  "PICK" the current element
         curr_str.push_back(s[curr_index]);
         int left = helper (s, curr_str, curr_index + 1);
 
         //  "DONT PICK" the current element
-        curr_str.pop_back();        
+        curr_str.pop_back();      
         int right = helper (s, curr_str, curr_index + 1);
 
 
@@ -52,11 +49,8 @@ public:
 
     int longestPalindromeSubseq(string s) {
         string curr_string = "";
-        return helper(s, curr_string, 0);        
+        return helper(s, curr_string, 0);      
     }
 };
 
 ```
-
-
-## Approach 2: Needs 2D dp - so skip
