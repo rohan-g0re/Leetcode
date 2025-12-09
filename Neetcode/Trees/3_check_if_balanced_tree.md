@@ -36,7 +36,14 @@ public:
 
         // STEP 2: IF YOU YOURSELF ARE GOOD THEN CHECK FOR YOUR CHILDREN AS WELL
 
-        bool check_left = isBalanced(root -> left);
+        bool check_left = isBa
+        
+        
+        
+        
+        
+        
+        lanced(root -> left);
         bool check_right = isBalanced(root -> right);
         
         return ( check_left && check_right );
