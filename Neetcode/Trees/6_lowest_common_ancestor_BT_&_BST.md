@@ -28,9 +28,10 @@ public:
             return left; // Both found in left, or only left found  
         }
         else{
-            // handles both cases --> 
-            //     1. left and right null
-            //     2. both NOT null
+            // handles the case where both are NOT null --> which means that both are on subtrees below
+
+            // in such case we need the root itself bcoz this would SURELY BE THE FIRST TIME THIS HAS HAPPENED -->
+            // which means this root is the actual answer
 
             return root;
         }
@@ -52,13 +53,17 @@ public:
 
         if (root == NULL) return NULL; 
 
+        // dont need to search the right subtree
         if (root -> val > max (p -> val, q -> val)){
             return lowestCommonAncestor(root -> left, p, q);
         }
+
+        // dont need to search the left subtree
         else if (root -> val < min (p -> val, q -> val)){
             return lowestCommonAncestor(root -> right, p, q);
         }
         else{
+            // becuause the value matched
             return root;
         }
 
