@@ -7,19 +7,9 @@ Previously we verified anagrams by:
 
 ## INTUITION:
 1. As we have to return the anagrams - we need to preserve the order - HENCE we cant sort
-
-
-# BRUTE --> Compare evry string with every other string
+- BRUTE --> Compare every string with every other string
     
-## Attempt 1 --> 
-1. Directly build the resultant array - also maintain a result_iterator 
-2. Push first element in result[1]
-3. If ith elemen in strs == 
-
-NOOOO we can t do this as well as we might need to go back in the resultant vector 
-
-
-## Solution 
+## Solution --> Build a map for sorted words
 
 1. maintain a map that has 
 2. key --> sorted word  |   value --> vector of all the ACTUAL words (chain)

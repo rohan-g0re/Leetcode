@@ -10,17 +10,22 @@
 
 
 
-## SOLUTION 1: WE can add numbering before words
+## SOLUTION --> ADD numbering before wordsn so that we now how many upcoming characters are the real word
+
+
+
 ```
 hello --> 005hello
 
     problems:
         - 003 005
         - 008 005hello
+```
 
-solution for that problem --> we add a delimiter after our number 
+## solution for this problem --> we add a delimiter after our number 
 
-    008# 005hello --> the # tells us that we are supposed to count next 5 words as string
+```
+    008# 005hello --> the # tells us that we are supposed to count next 8 words as string
 ```
 
 
@@ -78,8 +83,12 @@ public:
             
             result.push_back(decoded_str);
             
-            // Step 4: Move to next encoded string
+            
+            // Step 4: VERY IMPORTANT Move to next encoded string
             i = start + length;
+
+
+            
         }
         
         return result;
