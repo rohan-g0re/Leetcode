@@ -74,8 +74,10 @@ public:
 
 ## Approach 2: two pointer
 
-#### LOGIC --> INSTEAD of validating palindrome from outside --> start validating them from center --> so for a string "bab" you set your pointers l ad r at 'a' and then start moving outwards to find "WHAT IS THE BIGGEST SUBSTRING THAT 'a' IS A PART OF" 
+#### LOGIC --> INSTEAD of validating palindrome from outside --> start validating them from center --> so for a string "bab" you set your pointers l and r at 'a' and then start moving outwards to find "WHAT IS THE BIGGEST SUBSTRING THAT 'a' IS A PART OF" 
 
+
+## IMPORTANT: we want the l and r to start their lookup from the center of the PALINDROMIC STRING --> and, we are not talking about the center of the given string  
 
 ```cpp
 
@@ -89,10 +91,12 @@ public:
 
         int n = s.size();
 
+        // IMNPORTANT --> the for loop is helpful such that it lets us TEST every element as the CENTER OF THE PALINDROMIC STRING
+
         for (int i = 0; i < n; i++){
             
 
-            // IF S[i] IS THE CENTER OF "ODD-LENGTH" PALINDROME
+            // IF the chosen S[i] IS THE CENTER OF "ODD-LENGTH" PALINDROME - then l and r can be initilaized as a single element
 
             int l = i;
             int r = i;
@@ -109,7 +113,7 @@ public:
                 r++;
             }
 
-            // IF S[i] IS THE CENTER OF "EVEN-LENGTH" PALINDROME
+            // IF S[i] IS THE CENTER OF "EVEN-LENGTH" PALINDROME - then l and r CANNOT be initilaized as a same element --> and hence we need to have two different elements as the center
 
             l = i;
             r = i+1;

@@ -142,7 +142,7 @@ public:
 
             for (int j = 0; j < i; j++){
                 if (nums[j] < nums[i]){
-                    int what_j_brings_to_table = dp[j] + 1;
+                    int what_j_brings_to_table = dp[j] + 1; // BASIC INCREMENT of the count bcoz we will be adding this element 
                     
                     dp[i] = max (dp[i], what_j_brings_to_table);
                 }
@@ -152,11 +152,7 @@ public:
 
         }
 
-
-        return result;
-
-
-        
+        return result;        
     }
 };
 
