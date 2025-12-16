@@ -13,7 +13,7 @@ INTUITIONS:
 
 --- 
 4. next iteration: 
-    - we traverse the map to decreament everybody's cooldown by 1, bcox 1 CPU cycle passed 
+    - we traverse the map to decrement everybody's cooldown by 1, bcoz 1 CPU cycle passed 
     
 
 IMP CASE:
@@ -33,8 +33,6 @@ IMP CASE:
 - if no such task - idle
 
 TOOOOOOOO MANY CASES 
-
-*/
 
 
 # ACTUAL SOLUTION --> Using Max Heap and a Queue 

@@ -1,4 +1,4 @@
-# USE Monotonic Stack Logic for NGE (Next Greatest Element) --> BUT PUSH INDEXES because if you just push temperatures, the returned count would npt be correct even ig you count pops
+# USE Monotonic Stack Logic for NGE (Next Greatest Element) --> BUT PUSH INDEXES because if you just push temperatures, the returned count would not be correct even if you count pops
 
 ### Verbose edition
 

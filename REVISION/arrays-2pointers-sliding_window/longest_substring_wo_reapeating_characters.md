@@ -7,7 +7,7 @@
 1. Check every substring and maintain a freq count - and keep updating length count
 2. if already there in map
     2.1 break
-    2.2 upadte max
+    2.2 update max
     2.3 start again  
     -->>> early stopping criteria at (n-global_max ) --> because if we already have a 5 lenght substring then wecant get a better answer at n-3 
 
@@ -51,12 +51,12 @@ public:
 ```
 
 
-# OPTIMAL --> 2pointer / sliding window
+# OPTIMAL --> SLIDING WINDOW
 
 
 ### Algo:
 
-```
+```bash
 1. initializing:
     1.1 l and r pointers to zero --> this means that the SUBSTRING UNDER CONSIDERATION IS BETWEEN L AND R (included)
     1.2 Hashmap which stores <char, int> --> <alphabet, last_index_where_it_was_found>
@@ -70,7 +70,7 @@ public:
         - update global_max if possible
 
     2.2 If s[r] is ALREADY in map:
-        - IMPORTANT --> CHECK IF ITS INDEX IS IN THE CURRENT RANGE OF L AND R --> becusae it is possible that there is already an element but we dont have it in the current range --> IF ITS NOT then do 2.1
+        - IMPORTANT --> CHECK IF ITS INDEX IS IN THE CURRENT RANGE OF L AND R --> because it is possible that there is already an element but we dont have it in the current range --> IF ITS NOT then do 2.1
 
 considering it is in range:
 

@@ -10,7 +10,7 @@
 
 
 
-## SOLUTION --> ADD numbering before wordsn so that we now how many upcoming characters are the real word
+## SOLUTION --> ADD numbering before words so that we now how many upcoming characters are the real word
 
 
 
