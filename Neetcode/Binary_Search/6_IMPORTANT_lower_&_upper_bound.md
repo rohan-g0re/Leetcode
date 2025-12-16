@@ -1,4 +1,4 @@
-## LOWER BOUND AND UPPER BOUND IN ACTION
+## LOWER BOUND AND UPPER BOUND IN ACTION --> To find the first and last positions of the element in the sorted array.
 
 
 ```cpp

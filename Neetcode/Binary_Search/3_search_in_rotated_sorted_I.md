@@ -29,19 +29,21 @@ public:
                     high = mid - 1;
                 }
                 
-                // we fucked up - go into the other part
+                // Oh, thanks man for being sorted, but you were of no use. So I'll be going into the other part.
                 else{
                     low = mid + 1;
                 }
 
             }
+
             // right is sorted
             else{
                 
                 if (nums[mid] <= target && target  <= nums[high]){
                     low = mid + 1;
                 }
-                // we fucked up - go into the other part
+
+                // Oh, thanks man for being sorted, but you were of no use. So I'll be going into the other part.
                 else{
                     high = mid - 1;
                 }
@@ -50,7 +52,6 @@ public:
         }
 
         return -1;
-        
     }
 };
 

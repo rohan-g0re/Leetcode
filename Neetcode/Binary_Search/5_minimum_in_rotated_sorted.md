@@ -8,7 +8,7 @@
         - check left  
 
     1.2 mid > last  
-        - mid in part which was rotated  
+        - mid in rotated part
         - update mid  
         - check right  
 
@@ -44,14 +44,17 @@ public:
         while (l <= r){
 
             int mid = (l + r) / 2;
-
-            if (nums[mid] > nums[r]){
-                ans = min (ans, nums[mid]);
-                l = mid + 1;
+            
+            // mid is in sorted portion
+            if (nums[mid] <= nums[r]){
+                ans = min(ans, nums[mid]);
+                r = mid - 1;
             }
+
+            // mid is in rotated part --> min will be in rotated part ahead, so we update answer value and move to the right towards the sorted part
             else{
                 ans = min (ans, nums[mid]);
-                r = mid - 1;
+                l = mid + 1;
             }
 
         }
