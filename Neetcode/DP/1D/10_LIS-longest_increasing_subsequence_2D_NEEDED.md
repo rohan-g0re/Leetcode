@@ -1,68 +1,4 @@
-
-## Approach 1: Dumb ass brute force
-
-##### Generate all the subsequences --> check validness for every subsequence --> return the max length
-
-```cpp
-class Solution {
-public:
-
-    bool isvalidLIS(vector<int>& curr_arr){
-        
-        int n = curr_arr.size();
-
-        if (n <= 1){
-            return true;
-        }
-
-        for (int i = 1; i < n; i++){
-            if (curr_arr[i-1] >= curr_arr[i]){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    int helper (vector<int>& nums, int index,  vector<int>& curr_arr ){
-
-        int n = nums.size();
-        // base cases
-        if (index == n){
-            if (isvalidLIS(curr_arr)){
-                return curr_arr.size();
-            }
-            return 0;             
-        } 
-
-
-        // LOGIC
-        
-        // pick
-        curr_arr.push_back(nums[index]);
-        int left = helper (nums, index + 1, curr_arr);
-
-        // not pick
-        
-        curr_arr.pop_back();
-        int right = helper (nums, index + 1, curr_arr);
-
-
-        return max (left, right);
-
-
-    }
-
-    int lengthOfLIS(vector<int>& nums) {
-
-        vector<int> curr_arr;
-        return helper(nums, 0, curr_arr);
-    }
-};
-```
-
-
-
-## Approach 2: A better recursion 
+## Approach 1: A better recursion 
 
 #### WE have 2 cases --> 1. SKIP whatsoever - 2. PICK ONLY IF VALID
 
@@ -109,7 +45,7 @@ public:
 ```
 
 
-## Approach 3: UNORTHODOX: bottom up Tabulation with 1D array  --> O(n^2)
+## Approach 2: UNORTHODOX: bottom up Tabulation with 1D array  --> O(n^2)
 
 ### INTUITION / LOGIC / ALGO 
 
