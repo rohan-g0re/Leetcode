@@ -62,7 +62,7 @@ public:
 
 ##### 2 * val - prev_min = new_val
 
-###### needed to add long long to avpid integer overflow
+###### needed to add long long to avoid integer overflow
 
 ```cpp
 class MinStack {
@@ -82,14 +82,20 @@ public:
         } else {
             if (val >= minimum) {
                 st.push(val);
-            } else {
+
+
+            } else { // we got new minimum value
+
+
                 // Save old minimum before updating
                 long long oldMin = minimum;
                 minimum = val;
+
                 
                 // Encode using long long arithmetic
                 long long encoded = 2LL * val - oldMin;
                 st.push(encoded);
+                 
             }
         }
     }
