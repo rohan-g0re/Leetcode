@@ -1,7 +1,7 @@
 ## INTERESTING TECHNIQUE USED FOR MEASURING TIME:
 
-##### Before the queue iteration we take the SNAPSHOT of the queue for size, adn only go on fo those many iterations
-###### With this we can still keep on pushing elements in queue but the bfs will only be performed on the firsh `snapshot_time` elements
+##### Before the queue iteration we take the SNAPSHOT of the queue for size, and only go on for those many iterations
+###### With this we can still keep on pushing elements in queue but the bfs will only be performed on the first `snapshot_time` elements
 ##### When we are done with the `snapshot_time` number of elements --> it basically counts as ONE UNIT TIME, because all that we have/had in the queue for a given snapshot is BASICALLY THE IMMEDIATE NEIGHBORS OF THE ROTTEN ORANGES  
 
 *****

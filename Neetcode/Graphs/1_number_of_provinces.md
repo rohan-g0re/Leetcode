@@ -1,7 +1,7 @@
 
 # INTUITIONS:
 1. it is a disconnected graph with COMPONENTS 
-2. Whichver traversal I use I would need to restart it, when it reaches end --OR-- i need to start it from ever NON-VISITED point
+2. Whichver traversal I use, I would need to restart it, when it reaches end --OR-- i need to start it from every NON-VISITED point
 3. need a visited array
 
 > CHALLENGE --> working with adjacency matrix
