@@ -1,16 +1,5 @@
 ```cpp
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 
 private:
@@ -29,7 +18,7 @@ private:
         global_max = max (global_max, left + right);
 
 
-        // return the best DEPTH (not diameter) till now
+        // return the best DEPTH (not diameter) till now + 1 BCOZ you also need to add the root as a node in the path
         return 1 + max(left, right);
     }
 public:

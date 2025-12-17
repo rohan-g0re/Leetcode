@@ -34,16 +34,12 @@ public:
         if (abs(left - right) > 1) return false;
 
 
-        // STEP 2: IF YOU YOURSELF ARE GOOD THEN CHECK FOR YOUR CHILDREN AS WELL
+        // STEP 2: IF YOU YOURSELF ARE GOOD THEN CHECK FOR YOUR CHILDREN AS WELL 
 
-        bool check_left = isBa
-        
-        
-        
-        
-        
-        
-        lanced(root -> left);
+// THIS IS VERY IMPORTANT AS THIS IS THE WAY WE MAKE SURE THAT WE CHECK RECURSIVELY FOR ALL THE CHILDREN NODES
+
+
+        bool check_left = isBalanced(root -> left);
         bool check_right = isBalanced(root -> right);
         
         return ( check_left && check_right );

@@ -1,4 +1,18 @@
+```bash
 
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+
+```
 
 ```cpp
 
@@ -8,15 +22,15 @@ class Solution {
 
 private: 
 
-    int in_rec (TreeNode* node){
+    int rec_inorder (TreeNode* node){
 
         // base case
         if (node == nullptr){
             return 0;
         }
 
-        int left = 1 + in_rec(node -> left);
-        int right = 1 + in_rec(node -> right);
+        int left = 1 + rec_inorder(node -> left);
+        int right = 1 + rec_inorder(node -> right);
 
         return max(left, right);
     }
@@ -24,8 +38,7 @@ private:
 public:
     int maxDepth(TreeNode* root) {
 
-        return in_rec(root);
-        
+        return rec_inorder(root);
     }
 };
 

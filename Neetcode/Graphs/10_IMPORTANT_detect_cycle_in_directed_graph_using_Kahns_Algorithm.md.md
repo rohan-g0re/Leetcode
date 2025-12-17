@@ -31,7 +31,6 @@ private:
             }
         }
 
-
         vector<int> result;
 
         // STEP 3: LOOP BABY
@@ -51,7 +50,7 @@ private:
 
                 // 3.3 IS THERE ANY in-degree == 0?
 
-                // since we made changes(decrements) to only "NODE"'s destinations -- therefore we can only check if they have reached zero - 
+                // since we made changes(decrements) to only "NODE"'s destinations -- therefore we can only check if "THEY" have reached zero
 
                 // IMPORTANT --> WE DONT HAVE TO CHECK EVERYTHING
 
