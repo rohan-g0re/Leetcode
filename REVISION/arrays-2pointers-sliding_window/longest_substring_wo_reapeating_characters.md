@@ -74,7 +74,7 @@ public:
 
 considering it is in range:
 
-        - update the l pointer to map[s[r]] + 1 --> so that we update our current range in such a way that we donr have the element anymore
+        - update the l pointer to map[s[r]] + 1 --> so that we update our current range in such a way that we dont have the element anymore
         - update INDEX in map for that element 
         - calc length 
         - update global_max if possible

@@ -1,7 +1,7 @@
 ```
 Previously we verified anagrams by:
- 1. Checking Length and if equal check occurence of each and every character
-    - checking char count ---> can be donw using map (without sorting) or sorting both strings --> simple iterator on both strings 
+ 1. Checking Length and if equal --> check occurence of each and every character
+    for this --> checking char count ---> can be done using map (without sorting) or sorting both strings --> simple iterator on both strings 
 ```
 
 

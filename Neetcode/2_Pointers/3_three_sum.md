@@ -46,7 +46,7 @@ public:
 
 #### Algo
 
-```
+```bash
 BETTER: Maybe we can use that "DIFF" logic which we have used for 2 Sum
 1. Nested loop for i and j 
 2. if - (arr[i] + arr[j]) is FOUND IN <SET to-find-k>:

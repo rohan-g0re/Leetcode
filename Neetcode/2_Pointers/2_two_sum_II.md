@@ -19,8 +19,8 @@ remaining value in a map --> and returned a bool
 --->>>>
 
 1. Intialize 2 pointers - start and end
-2. if curr_sum < target --> we need to "Bring in a bigger num to increase the sum" --> that why l++
-3. if curr_sum > target --> we need to "Bring in a smaller number to reduce the sum" --> that why r--
+2. if curr_sum < target --> we need to "Bring in a bigger num to increase the sum" --> thats why l++
+3. if curr_sum > target --> we need to "Bring in a smaller number to reduce the sum" --> thats why r--
 
 ```cpp
 

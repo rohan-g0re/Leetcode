@@ -19,7 +19,7 @@ Output: 5
 
 Compare every price[i] - with the price[i + 1.. n]
 
-```
+```cpp
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -57,20 +57,20 @@ public:
 - we can see that the DS provides random access
 - we can see that we are currenlty using O(n^2) for brute force
 
---> THEREFORE we can use a 2 pointer approach:
+--> THEREFORE we can use 2 pointers and implement **SLIDING WINDOW approach**:
 
 
 1. L pointer as BUY 
 2. R pointer as SELl
 3. If R is lower than L --> we set L to R - as we have found a new lower position where we can buy the stock
-4. IF R is greater than L, we just keep on incrementing R to continue to find the max profit
+4. IF R is greater than L, calculate and update profit --> then keep on incrementing R to continue to find a better profit
 5. In both the cases we need to increment R
 
 
 
 
 
-```
+```cpp
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {

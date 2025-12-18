@@ -16,7 +16,7 @@
 2. if found in string 2 --> decrement
 3. in the end - everything should be 0;
 
-```
+```cpp
 class Solution {
 public:
     bool isAnagram(string s, string t) {
@@ -54,7 +54,7 @@ public:
 1. x - 'a' will give the actual alphabet number since it is ascii 
 2. **use single inverted commas for characters**
 
-```
+```cpp
 class Solution {
 public:
     bool isAnagram(string s, string t) {

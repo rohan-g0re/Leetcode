@@ -7,7 +7,7 @@
 --> set the pointers on 0 and n - k -1
 --> keep on swapping
 
---> FUCKING HELL --> i am diong swapping --> BUT EVERY OTHER ELEMENT NEEDS TO MOVE
+--> FUCKING HELL --> i am doing swapping --> BUT EVERY OTHER ELEMENT NEEDS TO MOVE
 ```
 
 ## INTUITIONS:
@@ -74,9 +74,9 @@ public:
             int temp1 = 0;
             int temp2 = nums[n - 1];
 
-            for (int i = 0; i < n; i++) {
-                temp1 = nums[i];
-                nums[i] = temp2;
+            for (int j = 0; j < n; j++) {
+                temp1 = nums[j];
+                nums[j] = temp2;
                 temp2 = temp1;
             }
         }

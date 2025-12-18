@@ -55,14 +55,13 @@ Eg:
 
 ### Algo
 
-```
+```bash
 
 1. Sort 
 
 2. For loop of i --> 
 
   
-
     2.1 initalize start = intervals[i][0] and end = intervals[i][1]
 
   
@@ -93,7 +92,7 @@ Eg:
 
 ### Code
 
-```
+```cpp
 
 class Solution {
 
@@ -158,7 +157,7 @@ TC -->
   - --> if we can accomodate the current pair --> edit range
   - --> if not --> add the current pair as a new one
 
-```
+```cpp
 
 class Solution {
 

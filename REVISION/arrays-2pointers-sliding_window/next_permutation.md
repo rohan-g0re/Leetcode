@@ -10,7 +10,7 @@ public:
     void nextPermutation(vector<int>& nums) {
 
 
-        // step 1: find the brak point --> nad store the "PART 2" index
+        // step 1: find the break point --> nad store the "PART 2" index
         int n = nums.size();
         int part2_index = -1;
 

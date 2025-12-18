@@ -88,7 +88,6 @@ public:
             i = start + length;
 
 
-            
         }
         
         return result;

@@ -45,7 +45,7 @@ public:
 
 
 
-# OPTIMAL --> splitting at -ve s and using prefix and suffix to find product of either sides && Restarting product calculation when gpt zeroes, which is basically splitting the array at zeroes 
+# OPTIMAL --> splitting at -ve s and using prefix and suffix to find product of either sides && Restarting product calculation when we get zeroes, which is basically splitting the array at zeroes 
 
 
 ## INTUITIONS:

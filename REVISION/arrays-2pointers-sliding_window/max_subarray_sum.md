@@ -9,7 +9,7 @@
 
 ```
 1. if the curr_sum is -ve --> restart your sum to zero and move ahead
-2. if the curr sum is +ve --> kepe it and move ahead
+2. if the curr sum is +ve --> keep it and move ahead
 ```
 
 ### CODE

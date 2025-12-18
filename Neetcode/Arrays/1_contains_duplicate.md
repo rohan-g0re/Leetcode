@@ -34,7 +34,7 @@ public:
 
 ## USING Set 
 
-```
+```cpp
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
@@ -57,7 +57,7 @@ public:
 
 ## USING Hashmap
 
-```
+```cpp
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {

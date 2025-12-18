@@ -35,7 +35,7 @@ public:
         // STEP 2 --> Copy element into heap so that only k remain 
 
         // we have to copy elements from map to Min-Heap
-        // freq should be first in min_heap - bcoz heap compares first value of pair for restrcuturing heap
+        // freq should be first in min_heap - bcoz heap compares first value of pair for restructuring heap
 
         for (auto& pair : map){
             
