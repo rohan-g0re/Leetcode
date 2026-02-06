@@ -284,9 +284,9 @@ public:
 
 ## KEY INSIGHTS:
 
-### In a sorted fashion, if one max_index fails, then all upcoming max_indexes will be failing, and hence we don't need to check those and can directly move to the next minimum_index.
+### 1. In a sorted fashion, if one max_index fails, then all upcoming max_indexes will be failing, and hence we don't need to check those and can directly move to the next minimum_index.
 
-### We don't need to reset right back to left+1. We can keep right where it is and just move left!
+### 2. We don't need to reset right back to left+1. We can keep right where it is and just move left!
 
 
 ```cpp
