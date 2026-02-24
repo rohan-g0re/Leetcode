@@ -85,6 +85,9 @@ public:
 
         return -1;
 
+        // different syntax
+        // return fresh > 0 ? -1 : time;
+
         
     }
 };

@@ -10,6 +10,10 @@
 ```
 
 
+
+
+## Solution 1 - Using BFS
+
 ```cpp
 class Solution {
 
@@ -73,4 +77,67 @@ public:
 };
 ```
 
-#### Learnings --> Check the grid index validaity INDIVIDUALLY IN EVERY RECURSION before making ANYYYYYY changes
+
+## Solution 2: Using Recusrive DFS
+
+```cpp
+
+class Solution {
+
+private:
+
+    void dfs_rec (vector<vector<char>>& grid, vector<vector<int>>& visited, int row, int col){
+        
+        // 1. basics
+        visited[row][col] = 1;
+        
+        int m = grid.size();
+        int n = grid[0].size();
+
+        // 2. find neighbor
+
+        int delta[4][2] = {{0, -1}, {0, 1}, {1, 0}, {-1, 0}};
+
+        for(int i = 0; i < 4; i++){
+
+            int nrow = row + delta[i][0];
+            int ncol = col + delta[i][1];
+
+            // neighbor index valid && land && unvisited
+            if (nrow >= 0 && nrow < m && ncol >=0 && ncol < n &&
+            grid[nrow][ncol] == '1' &&
+            visited[nrow][ncol] == 0){
+                dfs_rec(grid, visited, nrow, ncol);
+            }
+        }
+
+        return;
+    }
+
+
+public:
+    int numIslands(vector<vector<char>>& grid) {
+
+        int m = grid.size();
+        int n = grid[0].size();
+
+        vector<vector<int>> visited (m , vector<int>(n, 0));
+
+        int counter = 0;
+
+        for (int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if (grid[i][j] == '1' && visited[i][j] == 0){
+                    counter++;
+                    dfs_rec(grid, visited, i, j);
+                }
+            }
+        }
+
+        return counter;
+        
+    }
+};
+
+```
+## Learnings --> Check the grid index validaity INDIVIDUALLY IN EVERY RECURSION before making ANYYYYYY changes
