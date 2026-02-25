@@ -8,7 +8,6 @@
 
 # INTUITION SAYS --> "if it was not visited and is not on border -- THEN IT IS BOUND TO BE SURROUNDED BY X's"
 
-*/
 
 ```cpp
 class Solution {
@@ -26,7 +25,7 @@ private:
         if (board[row][col] == 'X') return;
 
         // here we go index valid
-      
+    
         if (board[row][col] == 'O' && visited[row][col] != 1){
 
             visited[row][col] = 1;
@@ -47,7 +46,7 @@ public:
         int n = board[0].size();
 
         vector <vector<int>> visited (m, vector<int>(n, 0));
-      
+    
         // Both Columns
 
         for (int i = 0; i < m; i++){
@@ -87,8 +86,6 @@ public:
 };
 
 ```
-
-
 
 #### A cleaner dfs dunction
 
