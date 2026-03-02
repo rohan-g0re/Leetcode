@@ -1,4 +1,4 @@
-# We are supposed to use TOPOLOGICAL SORTING to detect cycle (problem 1) as well as to return the actual order of courses (problem 2)
+# We are supposed to use TOPOLOGICAL SORTING to detect cycle as well as to return the sorted order stored in Result array.
 
 ```cpp
 
