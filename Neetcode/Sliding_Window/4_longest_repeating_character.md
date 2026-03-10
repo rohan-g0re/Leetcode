@@ -165,7 +165,12 @@ Approach 1 pays **O(26)** per shrink to scan the map and find the current max fr
 
 2. **On shrink (left pointer):** When we remove `s[l]`, its count decreases. That character might have been the max, so the *actual* max in the window could go down. But we **do not** update `maxf`. It can become "stale" (higher than the real max in the current window).
 
-3. **Why we don't need to fix it:** The algorithm doesn't require the *exact* max frequency of the current window. Keeping `maxf` as the "maximum frequency ever seen" is enough. **A stale (possibly larger) `maxf` still works becasue in the equation (length - max_node <=k ) --> THE MATHEMATICALLY LARGEST LENGTH WILL BE ACHIEVED WHEN WE HAVE HIGHEST max_node DEDUCTION**.
+3. **Why we don't need to fix it:** 
+    - For a substring to be valid, we need window_length - maxf <= k. Here, maxf is the frequency of the most common character in the current window. The difference window_length - maxf tells us how many characters we'd need to change to make the whole window the same character.
+    - The biggest valid substring we can get is of size maxf + k. So, the larger maxf is, the better. If maxf doesn't change or goes down, our potential best answer doesn't change. We don't need to update maxf in this case.
+    - On the other hand, if maxf goes up, it means we've found a character in the current window that appears more often than in previous windows. This means we might be able to get a longer valid substring, so we update maxf.
+
+
 
 4. **Complexity:** O(n) instead of O(26n), because we never scan the map.
 
