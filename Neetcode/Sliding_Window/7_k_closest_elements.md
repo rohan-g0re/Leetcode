@@ -8,6 +8,7 @@
 
 
 ```cpp
+
 class Solution {
 
 private:
@@ -60,8 +61,12 @@ public:
         vector <int> result;
         
         // this declaration can go out of bounds but it will be taken care of: by the while loop condition
-        int l = index;
-        int r = index + 1;
+        
+        int r = 0;
+        if (index < n) r = index;
+        else r = n;
+        
+        int l = r - 1;                         // l = r-1, could be -1, guarded by loops
 
         while(k > 0 && l >= 0 && r < n){
             
