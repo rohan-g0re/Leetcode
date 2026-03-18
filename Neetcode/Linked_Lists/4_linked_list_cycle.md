@@ -1,3 +1,5 @@
+GO on altering all the values in the linked list with `INT_MAX` --> if you find an `INT_MAX` then thats the loop
+
 ```cpp
 
 
@@ -8,7 +10,7 @@ public:
         while(head != nullptr){
 
             if (head -> val == INT_MAX) return true;
-            
+          
             else{
                 head -> val = INT_MAX;
                 head = head -> next; 
