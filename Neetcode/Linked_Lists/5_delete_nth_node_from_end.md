@@ -7,6 +7,7 @@
 
 
 # BETTER:
+
 1. Find Length of LL
 2. Find the node position on which we need to make the deletion
 3. If:
@@ -35,7 +36,7 @@ public:
         // 2. count the target length to travel
         int target_node = len - n + 1;  // "+1" since without it -> deleting head is difficult in a aLInked List
 
-        // 3. if n = 1 --> delete head
+        // 3.a. if n = 1 --> delete head
 
         mover = head;
 
@@ -45,7 +46,7 @@ public:
             return head;
         }
         
-        // 4. traverse till target and delete
+        // 3.b. traverse till target and delete
         
         else{
 
