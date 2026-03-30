@@ -1,9 +1,9 @@
 ## Semantics:
 
 1. Left chain [0, left - 1]
-1. Right Chain [right + 1, end]
+2. Right Chain [right + 1, end]
 3. Reverse Chain [left, right]
-1. left_chain_dummy --> last node of left chain 
+4. left_chain_dummy --> last node of left chain 
     - we need to link this to last reversed node
 5. switch_chain_dummy --> first node to be reversed --> basically LL[left] 
     - we need to link this to first node of right chain after reversing
