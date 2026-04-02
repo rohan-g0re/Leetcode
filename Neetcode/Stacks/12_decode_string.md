@@ -1,4 +1,4 @@
-# BOTH HAD SAME PERFORMANCE ON LEETCODE
+# BOTH HAD SAME PERFORMANCE ON LEETCODE --> though I think it is O(2n) vs O(n)
 
 ### Approach 1: heavy use of substring mechanisms
 
