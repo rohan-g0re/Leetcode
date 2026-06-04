@@ -4,7 +4,7 @@
 - After that --> check from the second digit if its a valley or peak 
 - if yes then go to next digit 
 
-### **IMPORTANT NOTE -->  we are directly comparuing the characters as numbers in form of char still follow lexico order --> we can also convert the respective chars into integer by subtracting zero like -- `char left = number[digit - 1] - '0''`**
+### **IMPORTANT NOTE -->  we are directly comparuing the characters as numbers in form of char still follow lexico order --> we can also convert the respective chars into integer by subtracting zero like --> `char left = number[digit - 1] - '0'`**
 
 ```cpp
 
