@@ -41,3 +41,27 @@ public:
 };
 
 ```
+
+```python
+
+class Solution:
+    def processStr(self, s: str) -> str:
+
+        result = ""
+
+        for c in s:
+            # add 
+            if c.isalnum(): 
+                result += c
+            # remove
+            elif c == '*':
+                result = result[:-1]
+            # add duplicate
+            elif c == '#':
+                result += result
+            # reverse
+            else:
+                result = result[::-1]
+    
+        return result
+```
