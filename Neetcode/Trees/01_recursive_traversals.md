@@ -13,11 +13,11 @@ class Solution {
         // left - right - root
 
         helper(answer, node->left);
-        
+      
         helper(answer, node->right);
 
         answer.push_back(node->val);
-        
+      
 
     }
 
@@ -30,14 +30,12 @@ public:
         helper(answer, root);
 
         return answer;
-        
+      
     }
 };
-
 ```
 
-
-## INORDER
+#### INORDER
 
 ```cpp
 
@@ -48,13 +46,13 @@ class Solution {
         if (node == nullptr){
             return;
         }
-     
+   
         // left - root - right
 
         helper(answer, node->left);
-     
+   
         answer.push_back(node->val);
-        
+      
         helper(answer, node->right);
 
     }
@@ -67,14 +65,13 @@ public:
         helper(answer, root);
 
         return answer;
-     
-        
+   
+      
     }
 };
-
 ```
 
-## PREORDER 
+## PREORDER
 
 ```cpp
 
@@ -86,13 +83,13 @@ class Solution {
         if (node == nullptr){
             return;
         }
-     
+   
         // root - left - right
 
         answer.push_back(node->val);
 
         helper(answer, node->left);
-             
+           
         helper(answer, node->right);
     }
 
@@ -107,5 +104,4 @@ public:
 
     }
 };
-
 ```
