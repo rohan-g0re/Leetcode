@@ -1,4 +1,4 @@
-## Approach 1: A better recursion 
+## Approach 1: "Take Not Take"  Recursion
 
 #### WE have 2 cases --> 1. SKIP whatsoever - 2. PICK ONLY IF VALID
 
@@ -68,27 +68,29 @@ public:
 
         int n = nums.size();
 
-        if (n == 0) return 0;
-        if (n == 1) return 1;
+        if(n == 0) return 0;
+        if(n == 1) return 1;
 
-        vector <int> dp (n, 1);
+        vector<int> dp(n, 1);
         int result = 0;
 
         for (int i = 1; i < n; i++){
 
-            for (int j = 0; j < i; j++){
+            // this loop below tries to find the LIS for nums[0...i]            
+            for(int j = 0; j < i; j++){
+                
+
                 if (nums[j] < nums[i]){
-                    int what_j_brings_to_table = dp[j] + 1; // BASIC INCREMENT of the count bcoz we will be adding this element 
-                    
-                    dp[i] = max (dp[i], what_j_brings_to_table);
+                    dp[i] = max(dp[i], dp[j] + 1);
+                    // dp[i] showcases current max that has already been set
+                    // dp[j] + 1 showcases that SINCE j is valid we will be choosing ITS MAX and adding 1 because we added a new one to it 
                 }
             }
-            
-            result = max (result, dp[i]);
 
+            result = max(result, dp[i]); // basically just the maximum in our dp table
         }
-
-        return result;        
+        return result;
+        
     }
 };
 

@@ -69,12 +69,81 @@ public:
 
 
 
-## IT NEEDS 2D DP to solve it in memoization - so skip
+## Approach 2 : 2D DP table with memoization --> MLE: since the tables are too big
+
+```cpp
 
 
-## Approach 2: two pointer
+class Solution {
+private:
 
-#### LOGIC --> INSTEAD of validating palindrome from outside --> start validating them from center --> so for a string "bab" you set your pointers l and r at 'a' and then start moving outwards to find "WHAT IS THE BIGGEST SUBSTRING THAT 'a' IS A PART OF" 
+bool check(string s){
+    int l = 0;
+    int r = s.size() - 1;
+    while(l <= r){
+        if(s[l] != s[r]) return false;
+        l++;
+        r--;
+    }
+    return true;
+}
+
+string helper(string s, int i, int j,
+              vector<vector<bool>>& visited,
+              vector<vector<string>>& grid){
+
+    // 1. base cases:
+
+    // 1.1 invalid check for indices:
+    if(i > j) return "";
+
+    // 1.2 if in grid return string
+    if(visited[i][j]) return grid[i][j];
+
+    // 1.3 if length 1 then return that string --> bcoz string of length 1 is always valid palindrome
+    if(i == j){
+        visited[i][j] = true;
+        return grid[i][j] = s.substr(i, 1);
+    }
+
+    // 2. Check Palindrome
+    if(check(s.substr(i, j - i + 1))){
+        visited[i][j] = true;
+        return grid[i][j] = s.substr(i, j - i + 1);
+    }
+
+    // 3. Recursion Logic
+
+    // 3.1 remove left
+    string left = helper(s, i + 1, j, visited, grid);
+
+    // 3.2 remove right
+    string right = helper(s, i, j - 1, visited, grid);
+
+    // 4. update & return logic
+    visited[i][j] = true;
+    if(left.size() >= right.size()){
+        return grid[i][j] = left;
+    }
+    else{
+        return grid[i][j] = right;
+    }
+}
+
+public:
+    string longestPalindrome(string s) {
+        int n = s.size();
+        vector<vector<bool>> visited(n, vector<bool>(n, false));
+        vector<vector<string>> grid(n, vector<string>(n, ""));
+        return helper(s, 0, n - 1, visited, grid);
+    }
+};
+```
+
+
+# MAIN APPROACH --> two pointer
+
+### LOGIC --> INSTEAD of validating palindrome from outside --> start validating them from center --> so for a string "bab" you set your pointers l and r at 'a' and then start moving outwards to find "WHAT IS THE BIGGEST SUBSTRING THAT 'a' IS A PART OF" 
 
 
 ## IMPORTANT: we want the l and r to start their lookup from the center of the PALINDROMIC STRING --> and, we are not talking about the center of the given string  

@@ -1,3 +1,5 @@
+# **BRACKET SPAWN** recursion on parts of array
+
 ## Approach 1 --> directly modifying previous version of question
 
 ```cpp
@@ -45,8 +47,6 @@ public:
         int option2 = helper(temp2);
 
         return max(option1, option2);
-
-      
     }
 };
 ```

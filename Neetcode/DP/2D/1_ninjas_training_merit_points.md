@@ -36,5 +36,4 @@ int ninjatraining(int n, vector<vector<int>>& points){
     }
 
 }
-
 ```

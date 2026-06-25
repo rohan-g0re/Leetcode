@@ -1,3 +1,6 @@
+# **"TAKE - NOT TAKE" strategy on "NON - Continuous SUB-SEQUENCES"**
+
+
 ## Approach --> OPTIMAL --> DP with tabulation with space optimization 
 
 ```cpp

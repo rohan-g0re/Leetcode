@@ -1,4 +1,4 @@
-## qINTUITION:
+## INTUITION:
 
 - I know that it is a DP question and can be solved using fibonacci like recursion
 - RULE --> if we reach anywhere more than n --> then it is "OUT OF BOUNDS" --> hence answer not accepted
@@ -51,15 +51,15 @@ private:
 
         // 1.1 if in table
         if(dp[stair] != -1) return dp[stair];
-      
+    
         // 1.2 if reached at ending
         if(stair == n) return 1;
 
-      
+    
         // 2. logic
         // if not there then we need to take 2 steps
         int left = helper(stair + 1, n, dp);
-      
+    
         int right = 0;
         if(stair < n - 1){
             right = helper(stair + 2, n, dp); 
@@ -116,7 +116,7 @@ public:
         }
 
         return dp[n];
-      
+    
 
     }
 };
@@ -196,7 +196,7 @@ public:
         // returning logic
 
         return l+r;
-     
+   
     }
 };
 ```
@@ -220,9 +220,9 @@ public:
         if (n == 0) return 1;
         if (n == 1) return 1;
 
-      
+    
         // check in dp
-      
+    
         if (dp[n] != -1){
             return dp[n];
         } 
@@ -238,7 +238,7 @@ public:
         dp[n] = l+r;
 
         return dp[n];
-      
+    
 
     }
 

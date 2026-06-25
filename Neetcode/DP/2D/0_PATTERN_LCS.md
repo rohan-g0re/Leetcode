@@ -1,4 +1,12 @@
+# Longest Common Sub - Sequence
+
 ## Approach 1 --> Pure Recursion
+
+#### THE 3 LAYER COMPARISON
+- Match 
+- Not match - shift 1
+- Not Match - Shift 2
+
 
 ```cpp
 

@@ -1,9 +1,6 @@
+## Approach 1 - Pure Recusrion --> TLE
 
-
-
-## Approach 1 - Pure Recusrion --> TLE 
-
-### IMPORTANT LOGIC 
+### IMPORTANT LOGIC
 
 ```bash
 
@@ -21,10 +18,7 @@ Look at what helper(1) and helper(2) actually represent:
         via step 0 directly.
 
 So, because helper(i) recursively considers all ways to reach i, starting from the beginning of the staircase, the logic “start at 0 or 1” is already baked into those helper(i) values.
-
-
 ```
-
 
 ```cpp
 
@@ -55,13 +49,12 @@ public:
         int from_one = helper (cost, n-2);
 
         return min (from_zero, from_one);
-        
+      
     }
 };
 ```
 
-
-## Approach 2: Recusion with Memmoization 
+## Approach 2: Recusion with Memmoization
 
 ```cpp
 
@@ -103,16 +96,12 @@ public:
         int from_one = helper (cost, dp, n-2);
 
         return min (from_zero, from_one);
-        
+      
     }
 };
-
 ```
 
-
-
 ## Approach 3: DP with tabulation
-
 
 ```cpp
 
@@ -139,18 +128,14 @@ public:
 
         int from_zero = dp[n-1]; // need not do this but did this to REMEMBER that we are dealing with 2 different values
         int from_one = dp[n-2]; // need not do this but did this to REMEMBER that we are dealing with 2 different values
-        
+      
 
         return min(from_zero, from_one);
     }
 };
-
-
 ```
 
-
-## Approach 4: Tabulation with Space optimization 
-
+## Approach 4: Tabulation with Space optimization
 
 ```cpp
 
@@ -174,19 +159,17 @@ public:
             int current = min (left, right);
 
             // -----
-            
+          
             prev2 = prev1;
             prev1 = current;
-            
+          
         }
 
         int from_zero = prev1; // need not do this but did this to REMEMBER that we are dealing with 2 different values
         int from_one = prev2; // need not do this but did this to REMEMBER that we are dealing with 2 different values
-        
+      
 
         return min(from_zero, from_one);
     }
 };
-
-
 ```
