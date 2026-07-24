@@ -1,3 +1,8 @@
+## 2 Excellent Practices here;
+
+1. we are calculating global max before - this is the "main logic" --> but we dont return that, as that is not our **"Local knowledge to be returned"**
+2. we return the local knowledge - which is basically the max depth at current node - also called as height.
+
 ```cpp
 
 class Solution {
