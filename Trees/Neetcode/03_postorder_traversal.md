@@ -1,3 +1,40 @@
+# POST-ORDER Recursive
+
+```cpp
+
+class Solution {
+
+    void helper (vector<int>& answer, TreeNode* node){
+
+        if (node == nullptr){
+            return;
+        }
+        // left - right - root
+
+        helper(answer, node->left);
+        helper(answer, node->right);
+        answer.push_back(node->val);
+    }
+
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> answer;
+        helper(answer, root);
+        return answer;
+    }
+};
+```
+
+
+
+
+
+---
+
+
+
+
+
 # Iterative Postorder Traversal (Single Stack Approach)
 
 ## Intuition
