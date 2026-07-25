@@ -12,18 +12,6 @@
 # **IMPORTANT NOTE --> as we need to delete the node in end --> all functions must PASS TreeNodes BY REFERENCE**
 
 ```cpp
-
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 private:
 
@@ -34,17 +22,13 @@ private:
         }
 
         // gottcha here --> found the successor
-      
+    
         // 1. store value 
         int succ = root -> val;
 
-        /*
-        2. delete node: BY SETTING IT AS RIGHT SUBTREE
-            --> LOGIC
-            - set set as null node
-        */
+        // 2. delete node: BY SETTING IT AS RIGHT SUBTREE
         root = root -> right;
-      
+    
 
         // 3. return value
         return succ;
@@ -61,7 +45,7 @@ private:
         if(node -> val == key){
 
             // 2.1 if right exists --> replace with smallest successor
-          
+        
             if(node -> right != nullptr){
                 // find succ && delete succ && return succ value
                 int succ = successor(node -> right);
@@ -107,7 +91,7 @@ public:
         dfs(root, key);
 
         return root;
-      
+    
     }
 };
 ```
