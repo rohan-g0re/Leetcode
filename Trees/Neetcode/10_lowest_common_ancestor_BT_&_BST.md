@@ -1,4 +1,4 @@
-## BINARY TREE 
+# BINARY TREE
 
 ```cpp
 
@@ -37,13 +37,18 @@ public:
         }
 
 
-        
+      
     }
 };
-
 ```
 
-## BINARY SEARCH TREE
+# BINARY SEARCH TREE
+
+## INTUITION:
+
+- For BST we can explore based on the numbers
+
+#### MAIN INTUITION --> Lca is Either the immediate parent or one of the numbers (p or q) --> hence based on the BST split logic, if we get such a node where p and q are on either sides of it --> IT IS THE LCA
 
 ```cpp
 
@@ -63,13 +68,23 @@ public:
             return lowestCommonAncestor(root -> right, p, q);
         }
         else{
-            // becuause the value matched
+            
+            /*
+            Handles 2 cases:
+                1. Root matched to one of the P or Q nodes
+                    --> which means the other one is the child
+                    --> which means that this node is LCA
+                
+                2. Root -> val is in BETWEEN P and Q 
+                    --> this means that p and q are no more on one side together
+                    --> which means this p and q are in left and right subtree respectively
+                    --> this can only happen if the current root is AN IMMEDIATE PARENT OF BOTH p and q
+                    --> hence current node is the Least Common Ancestor
+            */
+
             return root;
         }
-
-
-        
+      
     }
 };
-
 ```
