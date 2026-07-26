@@ -1,6 +1,6 @@
 # INTUITION:
 #### 1. BFS/DFS from 1's that are on the boundary --> only traverse 1s --> mark visited in a visited grid
-#### 2. next for loop --> we look for 1's which are NOT VISITED --> thats the answer
+#### 2. next for loop --> we look for 1's which are NOT VISITED --> **COUNT THEM** --> thats the answer
 
 
 

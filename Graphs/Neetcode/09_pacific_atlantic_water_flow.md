@@ -13,26 +13,20 @@ private:
         
         visited[row][col] = true;
         
-        int directions[4][2] = {{-1,0}, {1,0}, {0,-1}, {0,1}};
+        int delta[4][2] = {{-1,0}, {1,0}, {0,-1}, {0,1}};
         
         for (int i = 0; i < 4; i++) {
-            int newRow = row + directions[i][0];
-            int newCol = col + directions[i][1];
+            int nrow = row + delta[i][0];
+            int ncol = col + delta[i][1];
             
-            // Check bounds
-            if (newRow < 0 || newRow >= m || newCol < 0 || newCol >= n) {
-                continue;
-            }
-            
-            // Already visited
-            if (visited[newRow][newCol]) continue;
-            
-            // Water can only flow from higher/equal to lower
-            // So we go in reverse: only visit cells that are >= current
-            if (heights[newRow][newCol] >= heights[row][col]) {
-                dfs(newRow, newCol, heights, visited);
+            // SANITY CHECK FOR NEIGHBOR
+            if (nrow >= 0 && nrow < m && ncol >= 0 && ncol < n && // valid index
+            visited[nrow][ncol] == false && // should not be visited before
+            heights[nrow][ncol] >= heights[row][col]){  // should be taller (reverse logic)
+                dfs(nrow, ncol, heights, visited);
             }
         }
+        return;
     }
 
 public:
@@ -55,7 +49,7 @@ public:
         for (int i = 0; i < m; i++) {
             dfs(i, n-1, heights, atlantic);  // Right column
         }
-        for (int j = 0; j < n; j++) {
+        for (int j = 0; j < n ; j++) {
             dfs(m-1, j, heights, atlantic);  // Bottom row
         }
         
@@ -68,7 +62,6 @@ public:
                 }
             }
         }
-        
         return result;
     }
 };

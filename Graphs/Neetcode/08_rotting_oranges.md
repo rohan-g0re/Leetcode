@@ -4,8 +4,9 @@
 ###### With this we can still keep on pushing elements in queue but the bfs will only be performed on the first `snapshot_time` elements
 ##### When we are done with the `snapshot_time` number of elements --> it basically counts as ONE UNIT TIME, because all that we have/had in the queue for a given snapshot is BASICALLY THE IMMEDIATE NEIGHBORS OF THE ROTTEN ORANGES  
 
-*****
+## Main logic --> the spread is going to start from rotten oranges - so should our simulation of "spread" using BFS
 
+---
 
 ## CODE: 
 
@@ -24,7 +25,9 @@ public:
         // phase 1 
         for(int i = 0; i < m; i++){
             for (int j = 0; j < n; j++){
+
                 if(grid[i][j] == 1) fresh++;
+                
                 else if (grid[i][j] == 2){
                     // push into queue
                     q.push({i, j});
@@ -46,7 +49,7 @@ public:
                 int col = q.front().second;
                 q.pop();
 
-                // check thoer neigh
+                // check their neighbor
 
                 int deltarow [] = {-1, 0, +1, 0};
                 int deltacol [] = {0, 1, 0, -1};
@@ -62,13 +65,13 @@ public:
                     && neighbor_col >= 0 && neighbor_col < n
                     && grid[neighbor_row][neighbor_col] == 1){
 
-                        // update grid
+                        // update grid - INFECT!!!
 
                         grid[neighbor_row][neighbor_col] = 2;
 
                         fresh--;
     
-                        // push them back
+                        // push this NEW ROTTEN ORANGE in queue
 
                         q.push({neighbor_row, neighbor_col});
                     }
@@ -87,6 +90,8 @@ public:
 
         // different syntax
         // return fresh > 0 ? -1 : time;
+        // OR
+        // return fresh == 0 ? time : -1;
 
         
     }

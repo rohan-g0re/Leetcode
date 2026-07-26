@@ -1,5 +1,8 @@
 ## INTUITION: Bfs over components and get area --> Keep a record of the max areas as well
 
+- 0 : water
+- 1 : land
+- 2 : visited
 
 
 ```cpp
@@ -52,10 +55,7 @@ private:
                     
                 }
             }
-
-
         }
-
         return area;
     }
 
@@ -68,7 +68,6 @@ public:
         int n = grid[0].size();
 
 
-        
         // driver
 
             // if not 0 and 2 pass - else (1) bfs
@@ -83,10 +82,8 @@ public:
                     int area = bfs(i, j, grid);
                     global_max = max(global_max, area);
                 }
-
             }
         }
-
         return global_max;
     }
 };

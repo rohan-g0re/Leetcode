@@ -10,75 +10,7 @@
 ```
 
 
-
-
-## Solution 1 - Using BFS
-
-```cpp
-class Solution {
-
-private: 
-    void DFS (int i, int j, vector<vector<char>>& grid){
-
-        int m = grid.size();
-        int n = grid[0].size();
-
-// ------ ------ ----VERY IMPPPPPPP ------ ------ ------ ----
-        // check if the current indexes are valid or not
-        if (i < 0 || i >= m || j < 0 || j >= n) return;
-
-
-        // 1. -------BASE CASES-----> can be 0,1,2
- 
-        // 1.1 IF LAND or already visited --> RETURN 
-        if (grid[i][j] == '0' || grid[i][j] == '2') return;
-       
-
-        // 1.2 IF VALID THEN MARK VISITED
-        grid[i][j] = '2';
-
-        
-// ------ ------ ----VERY IMPPPPPPP ------ ------ ------ ----
-       
-        // 2. EXPLORE --> the correctness of indexes && validness of content will be checked in their individual recurive calls
-        DFS(i, j-1, grid);
-        DFS(i, j+1, grid);
-        DFS(i-1, j, grid);
-        DFS(i+1, j, grid);
-        
-    }
-
-
-public:
-    int numIslands(vector<vector<char>>& grid) {
-        
-        int m = grid.size();
-        int n = grid[0].size();
-
-        int islands = 0;
-
-        for (int i = 0; i < m; i++){
-            for (int j = 0; j < n; j++){
-
-                if(grid[i][j] == '1'){
-                    
-                    islands++;
-
-                    DFS(i, j, grid);
-
-                }
-
-            }
-        }
-
-        return islands;
-        
-    }
-};
-```
-
-
-## Solution 2: Using Recusrive DFS
+## Solution 1: Recursive DFS - pre sanity check of indexes
 
 ```cpp
 
@@ -140,4 +72,71 @@ public:
 };
 
 ```
-## Learnings --> Check the grid index validaity INDIVIDUALLY IN EVERY RECURSION before making ANYYYYYY changes
+
+
+
+## Solution 2 - Recursive DFS - post sanity check of indexes
+
+```cpp
+class Solution {
+
+private: 
+    void DFS (int i, int j, vector<vector<char>>& grid){
+
+        int m = grid.size();
+        int n = grid[0].size();
+
+// ------ ------ ----VERY IMPPPPPPP ------ ------ ------ ----
+        // check if the current indexes are valid or not
+        if (i < 0 || i >= m || j < 0 || j >= n) return;
+
+
+        // 1. -------BASE CASES-----> can be 0,1,2
+ 
+        // 1.1 IF LAND or already visited --> RETURN 
+        if (grid[i][j] == '0' || grid[i][j] == '2') return;
+       
+
+        // 1.2 IF VALID THEN MARK VISITED
+        grid[i][j] = '2';
+
+        
+// ------ ------ ----VERY IMPPPPPPP ------ ------ ------ ----
+       
+        // 2. EXPLORE --> the correctness of indexes && validness of content will be checked in their individual recurive calls
+        DFS(i, j-1, grid);
+        DFS(i, j+1, grid);
+        DFS(i-1, j, grid);
+        DFS(i+1, j, grid);
+        
+    }
+
+
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        
+        int m = grid.size();
+        int n = grid[0].size();
+
+        int islands = 0;
+
+        for (int i = 0; i < m; i++){
+            for (int j = 0; j < n; j++){
+
+                if(grid[i][j] == '1'){
+                    
+                    islands++;
+
+                    DFS(i, j, grid);
+                }
+            }
+        }
+        return islands;
+    }
+};
+
+```
+
+## Learnings --> Check the grid index validity
+#### 1. Either before calling the recursive call
+#### 2. Or as soon as the next call starts

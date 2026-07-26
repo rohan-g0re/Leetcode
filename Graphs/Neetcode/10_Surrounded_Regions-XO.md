@@ -1,12 +1,14 @@
 ## INTUITION: START FROM THE BORDER
 
-```bash
-- traverse each zero - and mark them visited in a visited grid
-- after all 4 traversals done:
-    mark those zeroes as x which were not visited 
-```
+1. Start from '0's at border:
+    - traverse each zero using dfs
+    - this complete region is NOT SURROUNDED as we started from a border zero
+    - mark all the zeroes - in a visited grid
+2. after all 4 traversals done (4 borders):
+    - traverse through grid and find such ZEROES which were not visited
+    - **these 'O's are the one which were not visited BCOZ they are not in SAFE region (they are surrounded by Xs) --> and hence WILL BE CAPTURED**
 
-# INTUITION SAYS --> "if it was not visited and is not on border -- THEN IT IS BOUND TO BE SURROUNDED BY X's"
+# MAIN LOGIC --> "if it was not visited and is not on border -- THEN IT IS SURROUNDED BY 'X's"
 
 
 ```cpp
@@ -15,7 +17,7 @@ class Solution {
 private:
     void dfs(int row, int col, vector<vector<int>>& visited, vector<vector<char>>& board){
 
-        int m = board.size();
+                int m = board.size();
         int n = board[0].size();
 
         // if index not valid 
@@ -87,7 +89,7 @@ public:
 
 ```
 
-#### A cleaner dfs dunction
+# Cleaner dfs dunction --> pre-recursion sanity check
 
 ```cpp
 class Solution {
