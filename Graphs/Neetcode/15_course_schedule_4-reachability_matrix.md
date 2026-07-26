@@ -5,7 +5,7 @@
 ##### 4. Therefore, we don't need topological order; we need a reachability matrix. When looking at the constraints, we also saw that our graph will not have any cycles. Hence, this makes it way easier.
 
 
-Therrefore we can do it without topo order I guess.
+Therefore we can do it without topo order I guess.
 
 ### Approach 1: BRUTE: For every query [u, v], DFS from u and check if v is found
 
@@ -38,13 +38,13 @@ private:
 public:
     vector<bool> checkIfPrerequisite(int numCourses, vector<vector<int>>& prerequisites, vector<vector<int>>& queries) {
 
+        // base cases
         if (prerequisites.size() == 0){
             return vector<bool> (numCourses, false);
         }
 
 
         // 1. create adjlist
-
         vector<vector<int>> adjlist(numCourses); // a --> b
         for(auto req : prerequisites){
             adjlist[req[0]].push_back(req[1]);

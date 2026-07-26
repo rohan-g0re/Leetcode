@@ -11,7 +11,7 @@
         2. target --> if target then return snapshot_time + 1;
 
 
-5. **MATURE THOUGHTS: we can add +1 to 0000 --> 0001 and  push --> BUT we can again do -1 and push 0000 --> therefore we will be in infinite cycle --> THERFORE KEEP A CYCLE OF VISITED NODES**
+5. **MATURE THOUGHTS: we can add +1 to 0000 --> 0001 and  push --> BUT we can again do -1 and push 0000 --> therefore we will be in infinite cycle --> THEREFORE KEEP A CYCLE OF VISITED NODES**
 
 
 
@@ -104,68 +104,80 @@ public:
 # Solution 2: No for loop - USING SET for quick lookup
 
 ```cpp
-
 class Solution {
+
+private:
+
+pair<string, string> stringify(int posi, string code){
+
+    // 1. fetch current digit at position
+    int digit = code[posi] - '0';
+
+    // 2. calculate 2 digits
+    int plus_digit = (digit + 1) % 10;
+    int minus_digit = (digit + 9) % 10;
+    
+    // 3. convert those digits in string
+    // 4. replace in code
+
+    string plus = code;
+    plus[posi] = '0' + plus_digit;
+
+    string minus = code;
+    minus[posi] = minus_digit + '0'; 
+    
+    return {plus, minus};
+
+}
+
 
 public:
     int openLock(vector<string>& deadends, string target) {
 
-        unordered_set<string>visited;
-        unordered_set<string>dead (deadends.begin(), deadends.end());
+        unordered_set<string> deads (deadends.begin(), deadends.end());
+        unordered_set<string> visited;
 
-        if (dead.count("0000")) return -1;
-        if (target == "0000") return 0;
+        // base cases
+        if(target == "0000") return 0;
+        if(deads.find("0000") != deads.end()) return -1;
 
 
-        queue <string> q;
-        visited.insert("0000");
+        // start bfs
+
+        queue<string> q;
+
         q.push("0000");
+        visited.insert("0000");
 
-        int snapshot = 0;
+        int depth = 0;
 
+        while(!q.empty()){
 
-        while (!q.empty()){
+            depth++;
+            int snapshot = q.size();
 
-
-            snapshot++;
-            int qsize = q.size();
-
-            for (int ele = 0; ele < qsize; ele++){
-
+            // there are multiple nodes in this snapshot --> hence for each node:
+            for(int i = 0; i < snapshot; i++){
+                
                 string node = q.front();
                 q.pop();
 
+                for(int posi = 0; posi < 4; posi++){
+                    auto [plus, minus] = stringify(posi, node);
 
-                // check neighbor
+                    // if any of them matches trarget --> return snapshot
+                    if(plus == target || minus == target) return depth;
 
-                for(int i = 0; i < 4; i++){
-                    // neighbor digit change calculation
-                    
-                    // step 1: INT: get digit
-                    int digit = node[i] - '0';
-
-                    // step 2: INT: calculate new digit
-                    int new_digit_add = (digit + 1) % 10;
-                    int new_digit_sub = (digit - 1 + 10) % 10;
-
-                    // step 3: STR: calculate neigbors with new digit
-                    string new_string_add = node;
-                    string new_string_sub = node;
-                    new_string_add[i] = '0' + new_digit_add;
-                    new_string_sub[i] = '0' + new_digit_sub;
-
-                    // step 4: STR: check if new number after replacing == target or not
-                    if (new_string_add == target || new_string_sub == target) return snapshot;
-
-                    // step 5: STR: check valid neighbor or not
-
-                    if (!dead.count(new_string_add) && !visited.count(new_string_add)){
-                        visited.insert(new_string_add);
-                        q.push(new_string_add);
+                    // ELSE -> explore if NOT A deadend && not visited yet --> CHECK for both strings
+                        
+                    if(deads.find(plus) == deads.end() && visited.find(plus) == visited.end()){
+                        q.push(plus);
+                        visited.insert(plus); // since now we have completely process it
                     }
-                    if (!dead.count(new_string_sub)  && !visited.count(new_string_sub)){
-                        visited.insert(new_string_sub);
-                        q.push(new_string_sub);
+
+                    if(deads.find(minus) == deads.end() && visited.find(minus) == visited.end()){
+                        q.push(minus);
+                        visited.insert(minus); // since now we have completely process it
                     }
                 }
             }

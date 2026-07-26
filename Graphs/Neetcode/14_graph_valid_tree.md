@@ -1,8 +1,7 @@
-# 1. Detect cycle in undirected graph using BFS
-
-### The complete intuition is that we need to carry PARENT along with a BFS traversal.
-
-### If anytime a neighbor is VISITED & is NOT THE PARENT that it came from, then it means that we have found a cycle. That's it!
+# Approach 1. Detect cycle in undirected graph using BFS
+- The complete intuition is that we need to carry PARENT along with a BFS traversa
+- If anytime a neighbor is VISITED & is NOT THE PARENT that it came from, then it means that we have found a cycle. That's it!
+#### NOTE: if the graph is disconnected, then it's not a valid tree. So, check if everyone is visited. 
 
 ```cpp
 
@@ -11,7 +10,7 @@ public:
     bool validTree(int n, vector<vector<int>>& edges) {
 
     
-        // We need an adjacency list or an adjacency matrix for this, so that is why we create it!
+        // We PREFER TO USE an adjacency list for this, so we create it!
         vector<vector<int>> adj_list (n);
 
         for (auto pair : edges){
@@ -52,10 +51,7 @@ public:
 
 // --------------> CYCLE DETECTION LOGIC
 
-
-
                 // 2.2. not visited
-
                 visited [ neighbor ] = 1;
                 q.push({neighbor, node});
 
@@ -80,11 +76,10 @@ public:
 - Time complexity O(n + 2e)
 - Space complexity O(n).
 
-# 2. Detect cycle in undirected graph using DFS
+# Approach 2: Detect cycle in undirected graph using DFS
+- The complete intuition is that we need to carry PARENT along with a recursive DFS traversal.
+- If anytime a neighbor is VISITED & is NOT THE PARENT that it came from, then it means that we have found a cycle.
 
-### The complete intuition is that we need to carry PARENT along with a recursive DFS traversal.
-
-### If anytime a neighbor is VISITED & is NOT THE PARENT that it came from, then it means that we have found a cycle.
 
 ```cpp
 
@@ -106,6 +101,7 @@ private:
             }
 
             // visited --> can be parent || can be cycle
+            // LOGIC --> if not parent then cycle
             else if(visited[neighbor] == 1 && neighbor != parent){
                 return false;
             }
