@@ -3,6 +3,10 @@
 
 ## Approach --> OPTIMAL --> DP with tabulation with space optimization 
 
+- dp[i - 1] becomes prev1 --> best till previous house
+- dp[i - 2] becomes prev2 --> best till house before that
+- dp[i] becomes curr / best
+
 ```cpp
 class Solution {
 public:
@@ -10,28 +14,30 @@ public:
 
         int n = nums.size();
 
+        // 1. base / pre-fill
+        // prev1 = best over houses 0..i-1
+        // prev2 = best over houses 0..i-2 (empty prefix starts at 0)
         int prev1 = nums[0];
         int prev2 = 0;
 
-        for (int i = 1; i < n; i++){
+        // 2. logic --> for each house: TAKE or NOT TAKE
+        for (int i = 1; i < n; i++) {
 
-            int rob_that_shit = nums[i];
-            
-            if (i > 1){
-                rob_that_shit += prev2;
-            }
+            // TAKE --> rob this house + best from i-2 (cannot take adjacent)
+            int take = nums[i] + prev2;
 
-            int spare_that_shit = 0 + prev1;
+            // NOT TAKE --> skip this house --> keep best from i-1
+            int skip = 0 + prev1;
 
-            int bread = max (rob_that_shit, spare_that_shit);
+            int best = max(take, skip);
 
+            // 3. slide the window (space opt updates)
             prev2 = prev1;
-            prev1 = bread;
-
+            prev1 = best;
         }
 
+        // 4. return --> prev1 is best over entire array
         return prev1;
-        
     }
 };
 ```

@@ -1,3 +1,5 @@
+# LC 22 - Medium
+
 ## INTUITIONS:
 
 - only valid are counted
@@ -17,7 +19,7 @@
 
 ## 1. opening bracket can be added if available
 
-## 2. Closing bracket can be added only if a parenthesis is op	en.
+## 2. Closing bracket can be added only if a parenthesis is open.
 
 ##### PROCESS --> Hence, we need to keep on passing the data of the open parentheses. First I tried to a flag, but when we return, setting a flag to false just means that all the parentheses are set,  BUT BUT BUT it is possible that we have 3 parentheses open and only one got closed. Hence, we are using a open_count To keep track of how many parentheses are currently open.
 

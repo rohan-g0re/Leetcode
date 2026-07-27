@@ -1,20 +1,16 @@
 # Unorthodox --> ROD CUTTING FRAMEWORK
 
-```bash
-ROD CUTTING LOGIC --> current best can be either
-    1. best of 0->i-1 * i
-    2. i itself
-but this only works for max_sum_subarray 
+### ROD CUTTING LOGIC --> current best can be either
+1. best of 0->i-1 * i
+2. i itself
+- but this only works for max_sum_subarray 
 
-FOR PRODUCT --> REMEMBER we need to keep a track of MINIMUM PRODUCT AS WELL because it can anytime turn to positive - if a negative number comes up
+## MAIN INTUITION --> FOR PRODUCT --> REMEMBER we need to keep a track of MINIMUM PRODUCT AS WELL - because it can anytime turn to positive - if a negative number comes up
 
-Therefore logic becomes like:
-
-CURRENT BEST CAN BE FROM: 
-    1. best of max 0->i-1 * i -------- max_prod [i-1] * i
-    2. best of min 0->i-1 * i -------- min_prod [i-1] * i 
-    3. i itself
-```
+### Therefore logic changes and becomes --> CURRENT BEST CAN BE FROM: 
+1. best of max 0->i-1 * i -------- max_prod [i-1] * i
+2. best of min 0->i-1 * i -------- min_prod [i-1] * i 
+3. i itself
 
 
 ## Approach 1: Tabulation
@@ -53,13 +49,12 @@ public:
             }
 
         }
-
         return global_max;      
     }
 };
 
-```
 
+```
 
 
 ## Approach 2: Tabulation with Space Optimization 

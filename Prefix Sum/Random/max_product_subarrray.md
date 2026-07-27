@@ -1,3 +1,5 @@
+# LC - 152 - medium
+
 ## INTUITION:
 1. we need to traverse through array
 2. we cant sort as the position is important
@@ -6,7 +8,7 @@
 # BRUTE --> Check EVERY sub array for their product
 - have i an j as bounding indexes
 - run between i an j to calculate prodduct
-- compare it ot global_max
+- compare it to global_max
 
 
 
@@ -41,29 +43,25 @@ public:
     }
 };
 ```
-**this is still O(n^2) --> need to bring it down somwhow**
+**this is still O(n^2) --> need to bring it down somehow**
 
 
 
-# OPTIMAL --> splitting at -ve s and using prefix and suffix to find product of either sides && Restarting product calculation when we get zeroes, which is basically splitting the array at zeroes 
+# OPTIMAL --> splitting at -ve s and using prefix and suffix to find product of either sides
+## && Restarting product calculation when we get zeroes, which is basically splitting the array at zeroes 
 
 
 ## INTUITIONS:
 - we need to DODGE negatives and zeroes
 
-```
-## 2 main things:
+### 2 main things:
 1. we basically SPLIT THE ARRAY upon ZEROES
-2. IN EVERY SPLITED Subarray - we wind the max such that --> it is either going
-to be a prefix or a suffix product --> this also takes into account the fact
-that prefix and suffix include complete arrays as well
-
---> which means at any time --> we compare the max of prefix and suffix with
-global_max
+2. IN EVERY SPLITED Subarray - we find the max such that --> it is either going to be a prefix or a suffix product --> this also takes into account the fact that prefix and suffix include complete arrays as well
+- --> which means at any time --> we compare the max of prefix and suffix with global_max
 
 
 ### Also instead of iterating 2 times we can do prefix nd suffix in one go
-```
+
 
 ## OPTIMAL CODE
 
@@ -80,12 +78,13 @@ public:
 
         for (int i = 0; i < n; i++) {
 
+            // this is how we RESTART CALCULATION - since we came across a zero --> we do this on either side
+
             if (prefix == 0)
                 prefix = 1;
             if (suffix == 0)
                 suffix = 1;
 
-            // this is how me start again from scratch on the side where we got a zero
 
             prefix *= nums[i];
             suffix *= nums[n - i - 1];
