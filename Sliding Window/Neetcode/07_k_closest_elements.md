@@ -1,11 +1,10 @@
 ## INTUITION
-- was thinking of heap but cant do that SINCE we will not know numbers which come after it 
+
+- was thinking of heap but cant do that SINCE we will not know numbers which come after it
 - GOOD INSIGHT --> k closest element are the one positionally closest to them --> so we need to start checking the left and right elements of the x --> therefore search for x and setup 2 pointers for it which move away from each other
-    - but x can be not present in the array as well --> in this case we use "UPPER BOUND" concept from binary search and hence we can find the position which makes the most sense (<= x) 
+  - but x can be not present in the array as well --> in this case we use "UPPER BOUND" concept from binary search and hence we can find the position which makes the most sense (<= x)
 
-
-##### SECOND THOUGHTS on heap  (maybe we can try later) --> can build a max heap of size k where the elements are <difference, key> --> when complete traversal is done: pop all from heal and put in array 
-
+##### SECOND THOUGHTS on heap  (maybe we can try later) --> can build a max heap of size k where the elements are <difference, key> --> when complete traversal is done: pop all from heal and put in array
 
 ```cpp
 
@@ -22,7 +21,7 @@ private:
         while (start <= end){
 
             int mid = start + (end-start) / 2;
-            
+          
             if(arr[mid] >= x){
                 result = mid;
                 end = mid - 1;
@@ -59,17 +58,17 @@ public:
 
 
         vector <int> result;
-        
+      
         // this declaration can go out of bounds but it will be taken care of: by the while loop condition
-        
+      
         int r = 0;
         if (index < n) r = index;
         else r = n;
-        
+      
         int l = r - 1;                         // l = r-1, could be -1, guarded by loops
 
         while(k > 0 && l >= 0 && r < n){
-            
+          
             if ( abs (arr[l] - x) <= abs(arr[r] - x) ){  // picking the left when a tie happens
                 result.push_back(arr[l]);
                 l--;
@@ -82,6 +81,8 @@ public:
             k--;
 
         }
+
+      // RAN OUT OF NUMBERS on one end --> just keep on adding numbers from other end
 
         while (k > 0 && l >= 0){
             result.push_back(arr[l]);
@@ -100,5 +101,4 @@ public:
 
     }
 };
-
 ```
