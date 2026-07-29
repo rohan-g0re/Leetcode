@@ -1,15 +1,15 @@
 ## INTUITIONS:
+
 1. can use heap-like structure
 2. We need to keep a track of count
 3. We can use a map for that
 4. ISSUE --> how do we return top k from map (thats why heap would have been great)
 
+Attempt 1: Counts to MAP --> SORT MAP
 
-Attempt 1: Counts to MAP --> SORT MAP 
 1. Counts -> O(n), O(1) lookups, O(nlogn), O(k) -->  O(nlogn)
 
-
-## SOLUTION 1: Freq map --> Heap --> Resultant array 
+## SOLUTION 1: Freq map --> Heap --> Resultant array
 
 ```cpp
 class Solution {
@@ -25,7 +25,7 @@ public:
             map[num]++;
         }
 
-        
+      
         priority_queue<pair<int, int>, 
         vector<pair<int, int>>,
         greater<pair<int, int>>
@@ -38,7 +38,7 @@ public:
         // freq should be first in min_heap - bcoz heap compares first value of pair for restructuring heap
 
         for (auto& pair : map){
-            
+          
             min_heap.push({pair.second, pair.first});
 
             if (min_heap.size() > k){
@@ -63,14 +63,12 @@ public:
 ```
 
 #### Time & Space Complexity
+
 - Time complexity: O(nlog⁡k)
 - Space complexity: O(n+k)
-Where n is the length of the array and k is the number of top frequent elements.
+  Where n is the length of the array and k is the number of top frequent elements.
 
-
-
-
-## Solution 2 --> Using bucket Sort 
+## Solution 2 --> Using bucket Sort
 
 ```
 - Instead of a heap, create a vector of vector
@@ -89,17 +87,16 @@ public:
             count[n] = 1 + count[n];
         }
 
-        
-        
-        
+      
+      
+      
         // ----------- IMPORTANT LOGIC ----------- 
         for (const auto& entry : count) {
             freq[entry.second].push_back(entry.first);
         }
 
 
-
-
+        // ---->>> walk in reverse order as the index represents frequency 
 
         vector<int> res;
         for (int i = freq.size() - 1; i > 0; --i) {
@@ -114,6 +111,8 @@ public:
     }
 };
 ```
+
 #### Time & Space Complexity
+
 - Time complexity: O(n)
 - Space complexity: O(n)

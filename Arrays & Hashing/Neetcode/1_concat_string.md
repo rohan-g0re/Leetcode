@@ -1,4 +1,4 @@
-# INTUITION: 
+# INTUITION:
 
 ```cpp
 
@@ -16,8 +16,7 @@ public:
         }
 
         return result;
-        
+      
     }
 };
-
 ```

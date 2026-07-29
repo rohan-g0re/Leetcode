@@ -5,7 +5,6 @@
 1. INTUITION --> use lower bound to get the RHS heater
 2. the heater before that, is going to be the LHS heater
 
-
 ```cpp
 class Solution {
 private:
@@ -59,10 +58,10 @@ public:
             // --------- left part -----------
             long left_dist = LONG_MAX;
             int left_index;
-    
-    
+  
+  
             //index calculation
-            
+          
             if(idx == -1){
                 // it means that we did not find RHS heater --> which means the righmost heater is  actually the LHS heater
                 left_index = heaters.size() - 1;
@@ -74,11 +73,11 @@ public:
 
 
             // distance calc.
-                
+              
             if(left_index >= 0){
                 left_dist = abs((long)house - (long)heaters[left_index]);
-            }            
-            
+            }          
+          
 
 
             // the min distance between these heaters is valid for this HOUSE --> but the final answer will be MAX of all these minimums
@@ -90,8 +89,7 @@ public:
         }
 
         return (int)result;
-        
+      
     }
 };
-
 ```

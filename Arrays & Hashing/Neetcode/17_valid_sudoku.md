@@ -4,8 +4,7 @@
 
 ### INTUITION 1: Use THREE SETS so as to keep track of every cell and RECORD them into all three
 
-### INTUITION 2: IMPORTANT --> A VALID sudoku is NOT a SOLVED Sudoku, but it is an UNSOLVED Sudoku that DOES NOT HAVE INVALID RECORDS --> WHICH MEANS BASICALLY WE NEED TO SOLVE SUCH THAT: WE DONT HAVE DUPLICATES bcox that is invalid 
-
+### INTUITION 2: IMPORTANT --> A VALID sudoku is NOT a SOLVED Sudoku, but it is an UNSOLVED Sudoku that DOES NOT HAVE INVALID RECORDS --> WHICH MEANS BASICALLY WE NEED TO SOLVE SUCH THAT: WE DONT HAVE DUPLICATES bcox that is invalid
 
 ```cpp
 
@@ -34,7 +33,7 @@ public:
                 pair <int, int> square_key = {row / 3, col / 3};
 
                 // we fid if we have duplicate in any of the 3 sets
-                
+              
                 if (rows[row].find(board[row][col]) != rows[row].end() || 
                 cols[col].find(board[row][col]) != cols[col].end() ||
                 squares[square_key].find(board[row][col]) != squares[square_key].end()
@@ -49,11 +48,7 @@ public:
 
             }
         }
-        return true;        
+        return true;      
     }
 };
-
-
 ```
-
-## OPTIMAL --> Using bit operations
