@@ -10,19 +10,18 @@ Input: height = [1,8,6,2,5,4,8,3,7]
 Output: 49
 Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
 
-
-****************
-
+---
 
 ## Intuition
-- we dont just need tallest pillars - but we also need them to be furter away from each other -->> basically largets AREA
-- area = l x h -->> 
-    - l = j - i
-    - h = min (height[i], height[j])
 
+- we dont just need tallest pillars - but we also need them to be furter away from each other -->> basically largets AREA
+- area = l x h -->>
+  - l = j - i
+  - h = min (height[i], height[j])
 
 ## Brute Force
-- Run through every combination of i and j and calculate the max area 
+
+- Run through every combination of i and j and calculate the max area
 
 ```cpp
 class Solution {
@@ -34,7 +33,7 @@ public:
 
         for (int i = 0; i < n; i++){
             for (int j = i + 1; j < n; j++){
-                
+              
                 int L = j - i;
                 int H =  min (height[i], height[j]);
                 int local_area = L * H;
@@ -46,23 +45,20 @@ public:
 
         return max_area;
 
-        
+      
     }
 };
 ```
 
 GAVE A TLE;
 
-
 ## Approach 2 - 2 pointer
-
 
 1. L = 0, R = n-1
 2. We calculate area for the current config of L and R
 3. then we shift THAT pointer which is minimum - between L and R
 
-#### this is done in the hope that we find a bigger height which increases our area - though as we are moving we are reducing the length 
-
+#### this is done in the hope that we find a bigger height which increases our area - though as we are moving we are reducing the length
 
 ```cpp
 class Solution {
@@ -91,7 +87,7 @@ public:
         }
 
         return max_area;
-        
+      
     }
 };
 ```

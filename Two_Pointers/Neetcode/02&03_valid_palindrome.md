@@ -32,14 +32,14 @@ public:
             }
 
             // ignore punctuations on right side 
-        
+      
             if (!isalnum(s[r])){
                 r--;
                 continue;
             }
 
             // compare the actual characters 
-        
+      
             if (tolower(s[l]) != tolower(s[r])){
                 return false;
             }
@@ -47,10 +47,9 @@ public:
             r--;
         }
         return true;
-    
+  
     }
 };
-
 ```
 
 # Valid Palindrome - II
@@ -102,12 +101,11 @@ public:
                 // 1st mismatch --> so atleast one of them should return true...
                 return is_valid (s, l+1, r) || is_valid (s, l, r-1);
             }
-          
+        
         }
 
         return true; //since we have valid palindrome ansd hence we need to make zero deletions.
 
     }
 };
-
 ```

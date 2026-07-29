@@ -229,29 +229,6 @@ while (p2 < n) { result.push_back(word2[p2++]); }
 - **Time:** `O(m+n)` — m, n = lengths of word1, word2; each character visited once.
 - **Space:** `O(m+n)` — the result string holds every character from both inputs.
 
-**Boats to Save People** — sort, then put pointers at both ends of the *same* array: pair the heaviest person with the lightest if they fit together, otherwise the heaviest sails alone. Twist is the greedy argument — the heaviest person needs a boat regardless, so the only question worth asking is whether anyone can ride along, and the lightest is the best candidate.
-```cpp
-sort(people.begin(), people.end());
-
-while(l <= r){
-    int weight = 0;
-    int boat_count = 0;
-
-    // 1st loop for adding heaviest people from right
-    while(r > 0 && boat_count < 2 && weight + people[r] <= limit){
-        weight += people[r]; boat_count++; r--;
-    }
-    // 2nd loop for adding lightest people from left
-    while(l < n && boat_count < 2 && weight + people[l] <= limit){
-        weight += people[l]; boat_count++; l++;
-    }
-    boats++;
-}
-```
-
-- **Time:** `O(n log n)` — n = number of people; sort dominates the O(n) two-pointer scan.
-- **Space:** `O(log n)` — sort's recursion stack; no extra array beyond the pointers.
-
 ---
 
 *Threads out of this topic: 2 is the sorted-input mirror of Array Hashing — "complement lookup" — sorting gives you a direction to move, hashing gives you O(1) recall, and they solve the same pairing problem two different ways. 1's converging scan is what Linked Lists — "two pointers on a list" does with pointer speed instead of array indices.*
