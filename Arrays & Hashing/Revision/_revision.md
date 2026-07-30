@@ -1,28 +1,8 @@
 ## IMP COMMENTS
 
 1. anything erlated to substrings --> LOOK AT Sliding window approaches (which are obviously implmented using 2 pointers)
-2. Heap Syntaxes:
 
-###### HEAP Syntax - MIN_HEAP
-
-```cpp
-priority_queue <pair<int, int>,
-vector<pair<int, int>>,
-greater <pair<int, int>>
-> min_heap;
-```
-
-###### HEAP Syntax - MAX_HEAP
-
-```cpp
-
-// The default is max heap so dont need to declare extras stuff
-
-priority_queue <pair<int, int>> max_heap;
-
-```
-
-3. **JUST LIKE MAP, WE CANT INITIALIZE HEAP WITH A PRE_DEFINED SIZE --> and so there will always be some other way of capping the size we are working on**
+2. **JUST LIKE MAP, WE CANT INITIALIZE HEAP WITH A PRE_DEFINED SIZE --> and so there will always be some other way of capping the size we are working on**
 
 ## PATTERNS to study :
 

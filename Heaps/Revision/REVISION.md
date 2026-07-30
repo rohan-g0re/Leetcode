@@ -2,6 +2,29 @@
 
 *Three sub-patterns, and they are genuinely three different jobs a heap does: it answers "what's the k-th," it feeds a greedy simulation, and it merges sorted streams. The one to say out loud in an interview is **1 — for k-th largest you use a min-heap** — because getting the type backwards is the classic tell. Code blocks are main logic only.*
 
+
+### Syntax:
+
+###### 1. MIN_HEAP --> required to get the kth largest element
+
+```cpp
+priority_queue <pair<int, int>, // declare datatype 
+vector<pair<int, int>>, // container --> basically datatype wrapped inside vector
+greater <pair<int, int>> // comparator --> basically datatype again
+> min_heap;
+```
+
+###### MAX_HEAP --> required to get the kth smallest element
+
+```cpp
+// The default is max heap so just need to give datatype of every node in heap 
+priority_queue <pair<int, int>> max_heap;
+
+```
+
+
+
+
 ---
 
 ## 1. Size-K heap for Kth / Top-K (use the *opposite* type) ⭐

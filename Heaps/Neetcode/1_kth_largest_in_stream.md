@@ -1,5 +1,4 @@
-
-### MY CODE 
+### MY CODE
 
 ```cpp
 
@@ -36,16 +35,16 @@ public:
         // stream = nums;
 
 
-       
+   
         for(int element : nums){
             heap.push(element);
             if (heap.size() > kx) heap.pop();
         }
 
 
-        
+  
     }
-    
+  
     int add(int val) {
 
         // EXTRA: add it to stream as well
@@ -57,10 +56,7 @@ public:
 
         return heap.top();
 
-        
+  
     }
 };
-
-
 ```
-

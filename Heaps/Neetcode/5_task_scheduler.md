@@ -1,41 +1,37 @@
 /*
 
 INTUITIONS:
-1. the tasks with more frequency should be executed first 
 
+1. the tasks with more frequency should be executed first
 
 ## BRUTE
+
 1. maintain a max heap such that the alphabet with most amount of tasks remaining is at top
-
 2. Pick that task - decrement its remaning tasks
+3. update the colldown in a map with n
 
-3. update the colldown in a map with n 
+---
 
---- 
-4. next iteration: 
-    - we traverse the map to decrement everybody's cooldown by 1, bcoz 1 CPU cycle passed 
-    
+4. next iteration:
+   - we traverse the map to decrement everybody's cooldown by 1, bcoz 1 CPU cycle passed
 
 IMP CASE:
+
 1. if task at heap.top has more time left in cooling down - WHAT TO DO;
 
 : take a vector and pop all of them until we find the one who can be scheduled --> if not found then idle
 
+---
 
--------
+## BETTER
 
-
-## BETTER 
 - keep a map such that <task, <remaining_count, cooldown> >
-
 - at each iteration we decrement cooldown and pick the one who has 0 cooldown after decreament and decreament thier rem_count
-
 - if no such task - idle
 
-TOOOOOOOO MANY CASES 
+TOOOOOOOO MANY CASES
 
-
-# ACTUAL SOLUTION --> Using Max Heap and a Queue 
+# ACTUAL SOLUTION --> Using Max Heap and a Queue
 
 ```cpp
 
@@ -58,7 +54,7 @@ public:
         for(char a : tasks){
             freq_map[a]++;
         }
-        
+      
         for (auto pair : freq_map){
             max_heap.push(pair.second);
         }
@@ -85,7 +81,7 @@ public:
                 continue;
             }
 
-            // STEP 3: pop the top node from heap which can be scheduled --> if it cant be scheduled it won be in heap
+            // STEP 3: pop the top node from heap which can be scheduled --> if it cant be scheduled it wont be in heap
 
             int task_freq = max_heap.top();
             max_heap.pop();
@@ -101,8 +97,7 @@ public:
         } 
 
         return time;
-        
+      
     }
 };
-
 ```
