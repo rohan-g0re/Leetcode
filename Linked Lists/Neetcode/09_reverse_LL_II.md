@@ -3,41 +3,37 @@
 1. Left chain [0, left - 1]
 2. Right Chain [right + 1, end]
 3. Reverse Chain [left, right]
-4. left_chain_dummy --> last node of left chain 
-    - we need to link this to last reversed node
-5. switch_chain_dummy --> first node to be reversed --> basically LL[left] 
-    - we need to link this to first node of right chain after reversing
-    - first node of right chain can be found at `mover` OR `front` after reversal is done
-
-
-
+4. left_chain_dummy --> last node of left chain
+   - we need to link this to last reversed node
+5. switch_chain_dummy --> first node to be reversed --> basically LL[left]
+   - we need to link this to first node of right chain after reversing
+   - first node of right chain can be found at `mover` OR `front` after reversal is done
 
 ## Algorithm:
 
 1. Phase 1: assign shit
-    - if `left==1` then:
-        - `left_chain_dummy == nullptr` bcoz there is no left chain to be linked later
-        - `switch_dummy == head` bcoz its the first node to be reversed
-    - else if left > 1:
-        - traverse till the `left - 1` node
-        - assign `left_chain_dummy` as that node
-        - `switch_dummy = mover -> next` bcoz it will be the `left` node itself
 
+   - if `left==1` then:
+     - `left_chain_dummy == nullptr` bcoz there is no left chain to be linked later
+     - `switch_dummy == head` bcoz its the first node to be reversed
+   - else if left > 1:
+     - traverse till the `left - 1` node
+     - assign `left_chain_dummy` as that node
+     - `switch_dummy = mover -> next` bcoz it will be the `left` node itself
 2. Phase 2: Reversal
-    - dont choose `prev` as left-1 --> does not help --> so choose nullptr --> ANY-WHICH-WAYS, we are going to link it later to the right chain.
 
-
+   - dont choose `prev` as left-1 --> does not help --> so choose nullptr --> ANY-WHICH-WAYS, we are going to link it later to the right chain.
 3. Phase 3: Link Nodes
-    1. linking reversed chain to right is easy
-        - just link `switch_dummy` to right chain's first node, which is found at `mover` OR `front`
 
-    2. linking left chain to last_node_to_be_reversed
-        - left chain found at `left_chain_dummy`
-        - last_node_to_be_reversed found at `prev`
+   1. linking reversed chain to right is easy
+
+      - just link `switch_dummy` to right chain's first node, which is found at `mover` OR `front`
+   2. linking left chain to last_node_to_be_reversed
+
+      - left chain found at `left_chain_dummy`
+      - last_node_to_be_reversed found at `prev`
 
 #### IMPORTANT --> BUT if left == 1 then it means that left chain is empty --> which also means that the first node of LL WILL NOW BE the last node to be reversed, which was originally found at LL[right] --> currently at prev --> so return prev
-
-
 
 ```cpp
 
@@ -91,7 +87,7 @@ public:
         // return prev if left chain empty
         return prev;
 
-        
+      
     }
 };
 ```

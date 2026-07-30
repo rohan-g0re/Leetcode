@@ -1,6 +1,10 @@
-# IMPORTANT TRICK -->  Any time if you want to create a new linked list, use the dummy node concept DUMMY NODE CONCEPT 
-#### 1. We basically creates 2 nodes: one as the head of new LL (which will not move) and the other which moves on the new LL
+# IMPORTANT TRICK -->  Any time if you want to create a new linked list, use the DUMMY NODE CONCEPT 
+
+
+#### 1. We basically create 2 nodes: one as the head of new LL (which will not move) and the other which moves on the new LL
+
 #### 2. this resembles to the general strategy that we use for LLs
+
 #### 3. Also the first type of new node (which does not move) can be of 2 types: it can be at position 0 which means we will be returning `dummy_node`      ---*OR OR OR*---      it can be at posi -1 which means we will be returning `dummy_node->next`
 
 

@@ -1,19 +1,17 @@
 # USING MAP OF POINTERS
 
-#### 2 pass 
+#### 2 pass		
 
 #### pass 1 --> make nodes
+
 #### pass 2 --> link nodes
 
-
 ## Map structure
-
 
 ```cpp
 
     // key             value
 <old_node_pointer, new_node_pointer>
-
 ```
 
 ## CODE:
@@ -59,5 +57,4 @@ public:
         return mp[head];
     }
 };
-
 ```

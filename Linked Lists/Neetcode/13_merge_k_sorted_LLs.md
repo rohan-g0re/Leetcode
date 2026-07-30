@@ -1,5 +1,3 @@
-
-
 ## INTUITION -> pick the smallest from heap as it will be the next one to merge
 
 ##### Therefore heap will be containing --> < value , LL head itself >
@@ -12,14 +10,14 @@
 
 1. create heap <int, Node*>
 2. while heap is not empty and heap.top != nullptr
-    
+  
     2.1 GET val --> pick val from heap and append to answer
 
     2.2 GET Node --> jump to next 
         --> if next is nullptr then dont push
-    
+  
     2.3 Push next in heap 
-        
+      
 */
 
 
@@ -33,7 +31,7 @@ public:
         greater <pair<int, ListNode*>>
         > min_heap;
 
-        
+      
         // initial fill with vals & heads of all the LLs 
 
         for(auto& ele : lists){
@@ -47,7 +45,7 @@ public:
 
         ListNode* dummy = new ListNode();
         ListNode* mover = dummy;
-         
+       
 
 
         while(!min_heap.empty()){
@@ -73,5 +71,4 @@ public:
         return dummy-> next;
     }
 };
-
 ```

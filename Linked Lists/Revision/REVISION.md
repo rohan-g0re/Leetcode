@@ -13,6 +13,7 @@
 **Where it shows up:** any time you're *building* a new list rather than walking one — merging, adding, filtering, or the heap-driven merge from Heaps — "Front line of k sorted lists". If you find yourself writing `if (result == nullptr) result = node; else tail->next = node;`, you wanted a dummy.
 
 **Add Two Numbers** — dummy plus carry, one pass over both lists. Twist is the `if(l1)`/`if(l2)` guards so a shorter list quietly contributes 0, and a leftover carry becomes its own final node.
+
 ```cpp
 ListNode* dummy_node = new ListNode(-1); // we are going to its NEXT later
 ListNode* mover = dummy_node;
@@ -41,6 +42,7 @@ return dummy_node -> next;   // the real head
 - **Space:** `O(max(n,m))` — new nodes for the output list, no other structures.
 
 **Merge Two Sorted Lists** — your variant skips the sentinel and instead *elects* the smaller head as the dummy, then splices. Twist is the O(1) tail-attach at the end: whichever list still has nodes is already sorted, so you link it wholesale instead of looping.
+
 ```cpp
 // elect the smaller head as the dummy
 if (list1 -> val <= list2->val){ dummy_node = list1; l1 = list1 -> next; l2 = list2; }
@@ -72,6 +74,7 @@ else{ temp -> next = l2; }
 **Where it shows up:** reverse the whole list, reverse a chunk, reorder, palindrome checks. When an interviewer says "in place, O(1) space" about a list, this is almost always the move they're fishing for.
 
 **Reverse Linked List** — the base dance. The four commented steps are the thing to remember.
+
 ```cpp
 ListNode* prev = nullptr;
 ListNode* mover = head;
@@ -93,6 +96,7 @@ return prev; // mover is on nullptr --> hence the head of this LL will be on pre
 - **Space:** `O(1)` — only pointer variables, reversed in place, no extra list allocated.
 
 **Reverse Linked List II** — reverse only `[left, right]`. Twist is the three-phase bookkeeping: walk to `left`, run the dance exactly `right-left+1` times, then **relink both seams** — and handle `left == 1`, where there is no left chain and the new head is `prev`.
+
 ```cpp
 // PHASE 1 --> walk to left, remember the seam
 if(left != 1){
@@ -137,6 +141,7 @@ return prev;   // left == 1 --> new head is prev
 **Where it shows up:** cycle detection, finding the middle, "nth node from the end," and any regroup-by-position problem. If a solution starts with "first, count the length," ask whether two pointers could have skipped that pass.
 
 **Odd Even Linked List** — two in-place chains each hopping two nodes, then stitched. Twist is saving `even_head` *before* you start weaving, because you'll need it after the loop has destroyed the original ordering.
+
 ```cpp
 ListNode* odd = head;
 ListNode* even = head -> next;
@@ -156,6 +161,7 @@ odd -> next = even_head;   // link both the chains
 - **Space:** `O(1)` — only pointer variables, no extra list allocated.
 
 **Remove Nth Node From End** — your version does a length pre-pass and deletes at `len - n + 1`. Twist is the null-guard before `mover->next->next`, so deleting the *tail* doesn't dereference null, plus the separate head-deletion case.
+
 ```cpp
 int target_node = len - n + 1;  // "+1" since without it -> deleting head is difficult in a Linked List
 
@@ -177,6 +183,7 @@ while(target_node > 0){
 - **Space:** `O(1)` — only pointer variables.
 
 **Linked List Cycle** — your destructive shortcut: stamp each visited node's value with `INT_MAX`, and re-seeing that stamp means a cycle. Twist worth stating honestly — **it mutates the input**, which is usually disqualifying; Floyd's fast/slow is the non-destructive answer and the one to lead with in an interview.
+
 ```cpp
 while(head != nullptr){
     if (head -> val == INT_MAX) return true;
@@ -202,6 +209,7 @@ return false;
 **Where it shows up:** deep-copying a graph or a list with cross-links, and any "rebuild this structure with new objects but identical topology" problem.
 
 **Copy List with Random Pointer** — pass 1 builds nodes and the map, pass 2 wires both pointers through lookups.
+
 ```cpp
 // PASS 1 --> clone every node, record old --> new
 while(mover != nullptr){
@@ -235,6 +243,7 @@ return mp[head];
 **Where it shows up:** reorder, palindrome, or anything that wants random access into a structure that only offers forward links.
 
 **Reorder List** — copy values to a vector, then two pointers (`l` from the front, `r` from the back) overwrite node values in the `L0, Ln, L1, Ln-1…` weave. Twist: no relinking whatsoever — you only rewrite `val`.
+
 ```cpp
 // dump values
 while (temp != nullptr){ copy_ll.push_back(temp -> val); temp = temp -> next; }
@@ -273,6 +282,7 @@ while(temp != nullptr){
 **Where it shows up:** "n+1 values in the range [1,n], find the duplicate, don't modify the input, O(1) space." The constraints are the tell — they exist specifically to rule out every easier approach.
 
 **Find the Duplicate Number** — this is the rare case where **your coded logic is not the pattern named above**. What you wrote is binary search on the *value space* (count how many elements are `<= mid`; the count overshoots on the side containing the duplicate) — a direct cousin of Binary Search — "Binary search on the answer space".
+
 ```cpp
 int start = 1;
 int end = nums.size() - 1;

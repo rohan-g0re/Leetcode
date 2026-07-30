@@ -1,18 +1,18 @@
 # BRUTE:
+
 1. push all elements from LL to vector
 2. Get the nth node
 3. search and destroy
 
 --> BUT we cant do this since the numbers are **NOT UNIQUE** --> hence we might need to make a map or something to keep a track of homenay times is the number came already
 
-
 # BETTER:
 
 1. Find Length of LL
 2. Find the node position on which we need to make the deletion
 3. If:
-    3.a. n == 1 --> delete head
-    3.b. n > 1 --> you can perform simple deletion
+   3.a. n == 1 --> delete head
+   3.b. n > 1 --> you can perform simple deletion
 
 **IMPORTANT --> while setting `mover -> next` we need to be sure that we are not addressing a null pointer's next - since it would give us a `NullPointerException`**
 
@@ -45,9 +45,9 @@ public:
             delete(mover);
             return head;
         }
-        
+      
         // 3.b. traverse till target and delete
-        
+      
         else{
 
             target_node--; // decrement bcoz our target node now is previous node of the node to be deleted
@@ -55,7 +55,7 @@ public:
             while(target_node > 0){
                 target_node--;
                 if (target_node == 0){
-                    
+                  
                     if (mover -> next -> next) mover -> next = mover -> next -> next;
                     else mover -> next = nullptr; // incase we are deleting tail then next should be direclty null OR ELSE we would have made an error by acccessing null's next pointer
                     return head;
@@ -65,6 +65,47 @@ public:
 
         }
         return head;
+    }
+};
+```
+
+# OPTIMAL:
+
+
+```cpp
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+
+        // gap to be maintined = n-1
+        ListNode* dummy = new ListNode(0, head);   // add this
+        ListNode* prev = dummy;
+        ListNode* back = head;
+        ListNode* front = head;
+
+        // create gap in back and front
+        int gap = n - 1;
+        while(gap > 0 && front != nullptr){
+            front = front -> next;
+            gap--;
+        }
+
+        if(front == nullptr) return head;
+
+        // let back reach the target node
+
+        while(front -> next != nullptr){
+            front = front -> next;
+            prev = back;
+            back = back -> next;
+        }
+
+        // delete function
+        prev -> next = back -> next;
+        delete(back);
+
+        return dummy -> next; // basically returning "head"
     }
 };
 ```
