@@ -17,7 +17,7 @@
         --> if next is nullptr then dont push
   
     2.3 Push next in heap 
-      
+    
 */
 
 
@@ -31,7 +31,7 @@ public:
         greater <pair<int, ListNode*>>
         > min_heap;
 
-      
+    
         // initial fill with vals & heads of all the LLs 
 
         for(auto& ele : lists){
@@ -45,7 +45,7 @@ public:
 
         ListNode* dummy = new ListNode();
         ListNode* mover = dummy;
-       
+     
 
 
         while(!min_heap.empty()){
