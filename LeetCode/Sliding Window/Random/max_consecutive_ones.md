@@ -1,5 +1,6 @@
 # LC 1004 - Medium
 
+# BETTER - Shrink Left pointer to make the window valid
 
 ## INTUITION:
 - keep 2 pointers
@@ -46,14 +47,64 @@ public:
 ```
 
 ## Post Solving Conclusions:
-1. pattern 2 - optimal from striver does not mean that that we are supposed to use 'if' instead of 'while' 
-2. IT MEANS THAT --> I am supposed to shrink the window to "JUST MAKE IT VALID"
-    - the while loop over here basically deletes only one zero from end
-    - but we need a while loop instead of an 'if' case to make that happen
+1. pattern 2 - Better
+2. This is better becuase in shrinking the window from left side "MY MAX_LEN was not preseerved" --> hence i will need to take extra efforts to bring my window to max_len size and then MORE efforts to find the new max_len 
 
 
 # Complexities:
 1. TC = O ( 2 * n)
     - in worst case --> my l and r pointers are going to travel the complete array
 
+2. SC = O(1)
+
+
+
+# OPTIMAL - Preserving window size to current maxlen
+
+## INTUITION:
+- keep on incrementing r
+- if window is valid - update the max len
+- if invalid - increment the left pointer && dont increment the maxlen --> what will happen is:
+    - if the element that was just removed from the window was ZERO --> then at next iteration 
+
+
+
+```cpp
+
+class Solution {
+public:
+    int longestOnes(vector<int>& nums, int k) {
+
+        int counter = 0;
+        int l = 0;
+        int r = 0;
+        int n = nums.size();
+        int maxlen = 0;
+
+        while(r < n){
+
+            if(nums[r] == 0)counter++;
+
+
+            // if valid --> increment maxlen
+            if(counter <= k){
+                maxlen = max(maxlen, r - l + 1);
+            }
+
+            // in invalid --> shrink from left
+            else{
+                if(nums[l] == 0) counter--;
+                l++;
+            }
+
+            r++; // will do this anywhich-way
+        }
+        return maxlen;
+    }
+};
+
+```
+
+# Complexities:
+1. TC = O (n)
 2. SC = O(1)
