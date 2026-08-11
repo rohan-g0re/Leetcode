@@ -16,7 +16,7 @@
 
 ------->>>>> 2 functions needed:
 1. DS1:
-    - can be heap but each time finding performing "heapify" will be O(n) , but heap DOES NOT HAVE SEARCH
+    - can be heap but each time finding performing "heapify" will be O(logn) , but heap DOES NOT HAVE SEARCH
     - can use a simple map but finding top node will take O(n)
     - --> hence lets choose map
 
@@ -65,8 +65,8 @@ public:
             // 2. check validity
             
             if( (r-l+1) - top_freq_node(map) <= k){
+                max_length = max(max_length, r - l + 1); // update the max
                 r++;
-                max_length = max(max_length, r-l); // generally this is r-l+1 --> but we have ALREADY INCREMENTED r so NO NEED of +1
             }
             else{
                 // we need to move left pointer untill we get a valid window
