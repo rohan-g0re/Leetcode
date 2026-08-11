@@ -1,0 +1,1 @@
+- Old enums leak their names into the surrounding scope and silently become ints. Scoped ones don't. Always use enum class.
