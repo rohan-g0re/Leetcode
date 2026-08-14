@@ -1,9 +1,9 @@
 ## LOWER BOUND --> **"SMALLEST"** index with `value >= target`
 
 - if less than target -> start = mid + 1 --> bcoz it can never be the answer
-- if greater than target --> update answer && end = mid - 1 --> bcoz that position can be the answer
+- if greater than target --> update answer && end = mid - 1 --> bcoz we go a prospective answer but need to make it **TIGHTER**
 
-#### INTUITION --> start `ans` with hypothetical index --> this is the answer when target > nums[n-1]
+#### INTUITION --> start `ans` with out-of-bounds index --> this is the answer when target is last element
 
 ```cpp
 class Solution {
@@ -16,7 +16,7 @@ public:
         int ans = nums.size(); // hypothetical last position as ans --> needed when target is greater than all elements in array
 
         while(low <= high){
-            
+          
             int mid = low + (high - low) / 2;
 
             if(nums[mid] >= target){ // satisfies cond. --> therefor this "MAYBE" the answer
@@ -31,9 +31,8 @@ public:
     }
 };
 ```
+
 ##### NOTE: we are changing search space both the times because the actual answer is recoded in ans
-
-
 
 ## UPPER BOUND IN ACTION --> **"SMALLEST"** index with `value > target`
 
@@ -57,5 +56,4 @@ int upperbound(vector<int>& nums, int target){
     }
     return ans;
 }
-
 ```

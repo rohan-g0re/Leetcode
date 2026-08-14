@@ -4,7 +4,6 @@
 - 1 : land
 - 2 : visited
 
-
 ```cpp
 
 class Solution {
@@ -28,13 +27,13 @@ private:
 
 
         while (!q.empty()){
-                
+              
             int actual_row = q.front().first;
             int actual_col = q.front().second;
             q.pop();
 
 
-            
+          
             for (int i = 0; i < 4; i++){
                 int neighbor_row = actual_row + deltarow[i];
                 int neighbor_col = actual_col + deltacol[i];
@@ -42,17 +41,17 @@ private:
                 // check if indexes are valid
 
                 if(neighbor_row >= 0 && neighbor_row < m && neighbor_col >= 0 && neighbor_col < n){
-                    
+                  
                     // if 1 then update stuff
 
                     if(grid[neighbor_row][neighbor_col] == 1){
-                        
+                      
                         q.push({neighbor_row, neighbor_col});
 
                         area++;
                         grid[neighbor_row][neighbor_col] = 2;
                     }
-                    
+                  
                 }
             }
         }
@@ -63,17 +62,11 @@ public:
     int maxAreaOfIsland(vector<vector<int>>& grid) {
 
         int global_max = 0;
-        
+      
         int m = grid.size();
         int n = grid[0].size();
 
-
-        // driver
-
-            // if not 0 and 2 pass - else (1) bfs
-
-            // push in queue
-
+        // driver --> if not 0 and 2 pass - else (1) bfs
 
         for (int i = 0; i < m; i++){
             for (int j = 0; j < n; j++){
@@ -87,10 +80,71 @@ public:
         return global_max;
     }
 };
-
 ```
 
+#### TC --> O(m*n) due to grid + O(V+2E) for BFS
 
-
-#### TC --> O(m*n) due to grid + O(V+2E) for BFS 
 #### SC --> O(m*n) as we are using the grid
+
+
+
+
+
+## DFS Solution for no reason whatsoever
+
+#### maintained a area variable --> this is way better than passing it down for increments
+
+```cpp
+
+class Solution {
+private:
+
+    int dfs(int row, int col, vector<vector<int>>& grid, vector<vector<int>>& visited){
+
+        // mark visited
+        visited[row][col] = 1;
+        int area = 1;
+
+        int m = grid.size();
+        int n = grid[0].size();
+
+        // check neighbor
+        int delta[4][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+        for(int i = 0; i < 4; i++){
+            int nrow = row + delta[i][0];
+            int ncol = col + delta[i][1];
+
+            // valid check for neighbor --> indexes - land - unvisited
+            if(nrow >= 0 && nrow < m && ncol >= 0 && ncol < n && grid[nrow][ncol] == 1 && visited[nrow][ncol] == 0){
+                area += dfs(nrow, ncol, grid, visited);
+            }
+        }
+        return area;
+    }
+
+
+public:
+    int maxAreaOfIsland(vector<vector<int>>& grid) {
+
+        int m = grid.size();
+        int n = grid[0].size();
+        int max_area = 0;
+
+        vector<vector<int>> visited (m, vector<int>(n, 0));
+
+        // driver for land
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(grid[i][j] == 1 && visited[i][j] == 0)
+                max_area = max(max_area, dfs(i, j, grid, visited));
+            }
+        }
+
+        return max_area;
+
+        
+    }
+};
+
+```

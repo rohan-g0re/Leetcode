@@ -2,8 +2,7 @@
 
 ### `result_head` is basically a dummy node
 
-
-## Brute - 1 
+## Brute - 1
 
 - Pass 1 add odds in result array
 - Pass 2 add evens in result array
@@ -19,12 +18,12 @@ public:
         if(head == nullptr)  return head;
 
         ListNode* mover = head;
-        
+      
         ListNode* result_mover = new ListNode(mover->val);
         ListNode* result_head = result_mover;
 
         mover = mover -> next;
-        
+      
         // 1. pass 1
 
         int counter = 2;
@@ -48,7 +47,7 @@ public:
         mover = head -> next;
 
         // result pointers are fine
-        
+      
         while(mover){
 
             if(counter % 2 == 0){
@@ -63,20 +62,17 @@ public:
         }
 
         return result_head;
-                
+              
     }
 };
 ```
 
-
-
-
 ## Optimal --> RELINK ALL THE NODES by using concept of 2 POINTER nodes --> 1. odd pointer && 2. even pointer && 3. change links for each
 
 #### INTUITION
+
 - --> if both pointers jump (even number of nodes) then --> EVEN pointer will always be ahead
 - --> if LL has odd number of nodes then EVEN pointer will be behind
-
 
 ```cpp
 class Solution {
@@ -103,7 +99,7 @@ public:
         // link both the chains
         odd -> next = even_head;
 
-        return head;        
+        return head;      
     }
 };
 ```

@@ -16,6 +16,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
     int kthSmallest(TreeNode* root, int k) {
@@ -49,8 +50,6 @@ public:
             current = peek -> right;
         }
         return -1;
-      
     }
 };
-
 ```

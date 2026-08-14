@@ -15,6 +15,7 @@
 **Climbing Stairs** — the ladder, all four rungs, on the simplest possible recurrence: `dp[i] = dp[i-1] + dp[i-2]`.
 
 Stage 1, recursion:
+
 ```cpp
 // 1. base case --> if reached at ending
 if(stair == n) return 1;
@@ -32,7 +33,9 @@ if(stair < n - 1){
 
 return left + right;
 ```
+
 Stage 2, memoization — three added lines, exponential to linear:
+
 ```cpp
 // 1.1 if in table
 if(dp[stair] != -1) return dp[stair];
@@ -51,7 +54,9 @@ if(stair < n - 1){
 dp[stair] = left + right;
 return dp[stair];
 ```
+
 Stage 4, space-optimised tabulation — the array was only ever two cells wide:
+
 ```cpp
 int prev = 1;
 int prev2 = 1;
@@ -77,6 +82,7 @@ return prev;
 - **Space:** `O(n)` memo or table → `O(1)` space-optimised — two integers.
 
 **Min Cost Climbing Stairs** — same shape, cost added, and one thing that trips people at the end: you can finish from *either* of the last two steps, so the answer is `min(dp[n-1], dp[n-2])`, not `dp[n-1]`.
+
 ```cpp
 dp[0] = cost[0];
 dp[1] = cost[1];
@@ -99,6 +105,7 @@ return min(last_step, second_last_step);
 - **Space:** `O(n)` tabulated → `O(1)` with two rolling variables.
 
 **Frog Jump** — the same ladder with an absolute-difference cost. `dp[i] = min(dp[i-1] + |h[i]−h[i-1]|, dp[i-2] + |h[i]−h[i-2]|)`. The trailing comment on the space-optimised version is the kind of edge case worth keeping: with `n == 2` the loop body never runs, and the answer is already sitting in `prev1`.
+
 ```cpp
 int prev2 = 0;
 int prev1 = abs (height[1] - height[0]);
@@ -123,6 +130,7 @@ return prev1;
 - **Space:** `O(1)` — two rolling variables.
 
 **N-th Tribonacci** — the same thing with a three-deep look-back, written straight at stage 4. The only reason it's interesting is as proof the ladder generalises: a `k`-deep recurrence space-optimises to `k` variables, and the shifting block at the bottom is the whole update.
+
 ```cpp
 for(int i = 3; i <= n; i++){
 
@@ -153,6 +161,7 @@ return two;
 **Where it shows up:** house robber and its variants, maximum sum of non-adjacent elements, delete-and-earn, and as the mental model for the knapsack family. The tell is a constraint of the form "you cannot use two things that are adjacent / conflicting."
 
 **House Robber** — the recurrence stated plainly, at stage 4: `dp[i] = max(nums[i] + dp[i-2], dp[i-1])`.
+
 ```cpp
 // prev1 = best over houses 0..i-1
 // prev2 = best over houses 0..i-2 (empty prefix starts at 0)
@@ -180,6 +189,7 @@ for (int i = 1; i < n; i++) {
 - **Space:** `O(1)` — two rolling variables.
 
 **Maximum Sum of Non-Adjacent Elements** — your own template file, the same recurrence written with the recursion still visible. Worth keeping the stage-1 version in your head, because the `index < 0` base case is only obvious here.
+
 ```cpp
 // STEP 1. base case
 
@@ -199,12 +209,14 @@ int not_pick = 0 + helper(index - 1, arr);
 
 return max(pick, not_pick);
 ```
+
 *One fix to make: the memoised version of this template uses `if (dp[index] != 0)` as its "not computed yet" check. Zero is a legitimate answer, so that sentinel can't distinguish "empty" from "computed to 0." Use `-1`, as you do in every other file.*
 
 - **Time:** `O(2ⁿ)` recursion → `O(n)` memoised — n = array length.
 - **Space:** `O(n)` memo plus recursion stack → `O(1)` space-optimised.
 
 **House Robber II** — the circular twist, and the resolution is the pattern worth remembering. First and last house are now adjacent, so they can't both be taken. Rather than complicate the recurrence, you **run the linear solver twice on two brackets** — once excluding the last house, once excluding the first — and take the max. Every valid circular selection omits at least one of the two ends, so one of the brackets always contains it.
+
 ```cpp
 // BRACKET 1 --> exclude last house
 vector<int> temp1 (nums.begin(), nums.end() - 1);
@@ -233,6 +245,7 @@ return max(option1, option2);
 **Where it shows up:** maximum subarray, maximum product, best time to buy and sell, longest run satisfying a property. The tell is "contiguous" — subarrays get this, subsequences get pattern 2.
 
 **Maximum Subarray** — Kadane's, in the reset-on-negative spelling. No `dp` array at all; the accumulator *is* the table.
+
 ```cpp
 for (int num : nums) {
 
@@ -252,6 +265,7 @@ for (int num : nums) {
 - **Space:** `O(1)` — two integers.
 
 **Maximum Product Subarray** — the twist that makes this its own problem: for products you must also track the **minimum**, because one negative number turns the smallest product into the largest. So there are three candidates each step, not two, and you maintain two rolling values. This is worth being able to explain in one sentence — "a negative flips min and max, so I carry both" — because that sentence is the entire interview answer.
+
 ```cpp
 for (int i = 1; i < n; i++){
 
@@ -287,6 +301,7 @@ for (int i = 1; i < n; i++){
 **Where it shows up:** longest increasing subsequence, longest chain of pairs, Russian doll envelopes, largest divisible subset, and the "maximum number of non-overlapping things" family. Also worth knowing: LIS has an `O(n log k)` patience-sorting solution with binary search, so if the interviewer says "can you do better than n squared," that's the door.
 
 **Longest Increasing Subsequence** — the `O(n²)` scan-back. Every cell starts at 1 because a single element is a valid subsequence of length 1.
+
 ```cpp
 // dp[i] --> LIS length ENDING at index i (nums[i] is included as last element)
 vector<int> dp(n, 1);
@@ -314,6 +329,7 @@ for (int i = 1; i < n; i++){
 - **Space:** `O(n)` — one dp array.
 
 **LIS, pick/not-pick formulation** — the same problem expressed as pattern 2 with an extra piece of state: the index you last picked. This is the version that generalises, because the `prev` slot can carry any constraint. Note the offset — `prev` can be `-1`, and arrays can't be indexed at −1, so the column is `prev + 1` and the table needs `n+1` columns. Note also that **not-pick is unconditional**: your example says why, since picking a valid-but-large element (the 10 in `1, 10, 2, 3, 4, 5`) legally extends the run and ruins everything after it.
+
 ```cpp
 // 2.1 pick --> ONLY IF valid wrt prev
 
@@ -349,6 +365,7 @@ dp_table[index][prev + 1] = max(pick, not_pick);
 **Where it shows up:** word break, word break II, palindrome partitioning, decode ways, and any "can this string be split into valid pieces" question. The distinguishing feature is that the transition length is data-dependent rather than fixed, which is why the inner loop is over a dictionary rather than over `i-1, i-2`.
 
 **Word Break** — backward fill, dictionary as the transition set.
+
 ```cpp
 // dp[i] --> can we break s[i .. end] ?
 vector<bool> dp(n + 1, false);
@@ -392,6 +409,7 @@ return dp[0];
 **What it is:** two problems whose final solutions are not dynamic programming at all. Keeping them straight matters, because calling something DP when it has no memoised subproblems is the kind of thing an interviewer will pick at.
 
 **Longest Palindromic Substring** — your DP attempts (recursion, then a 2D memo of substrings) both die, one to time and one to memory. The solution you kept is **expand around centre**: treat every index as a possible middle and grow outward while the characters match. The reframing is the insight, and it's stated in your notes — stop validating palindromes from the outside in, start from the centre and ask how far it reaches. The detail that catches people is that you need **two expansions per index**, because an even-length palindrome has no single character at its centre. It's `O(n²)` time like the DP table, but `O(1)` space, which is why it wins.
+
 ```cpp
 // IMNPORTANT --> the for loop is helpful such that it lets us TEST every element as the CENTER OF THE PALINDROMIC STRING
 
@@ -436,6 +454,7 @@ for (int i = 0; i < n; i++){
 - **Space:** `O(1)` — two pointers (excluding the returned substring).
 
 **Generate Parentheses** — **pure backtracking, no DP.** There's no table and no reused subproblem; you're enumerating every valid string by building it character by character and pruning branches that can't be legal. The state that makes the pruning work is `open_count`, and your note records exactly why a boolean flag failed: a flag can only say "something is open," but you need to know *how many*, because closing one when three are open doesn't make the string complete.
+
 ```cpp
 // 1. base case --> opening and closing zero --> push in result
 

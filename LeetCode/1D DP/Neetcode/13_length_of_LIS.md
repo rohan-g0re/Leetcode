@@ -12,28 +12,28 @@ public:
         int n = nums.size();
         // base case
         if (index == n){
-            return 0;         
+            return 0;       
         } 
 
 
         // LOGIC
-    
+  
         // NOT TAKE --> WHAT-SO-EVER 
-    
+  
         int not_take = 0 + helper (nums, index + 1, prev_index);
 
         // TAKE --> ONLY IF VALID 
-    
+  
         int take = 0;
 
         if (prev_index == -1 || nums[prev_index] < nums[index])
         {
-        
+      
             // --> 3rd param is index because this is the new prev_index now - as we have added it
 
-            take = 1 + helper (nums, index + 1, index);                   
+            take = 1 + helper (nums, index + 1, index);                 
         }
-    
+  
         return max (take, not_take);
     }
 
@@ -85,7 +85,7 @@ public:
 
         for (int i = 1; i < n; i++){
 
-            // build best LIS that ENDS at i --> by trying every previous ending j        
+            // build best LIS that ENDS at i --> by trying every previous ending j      
             for(int j = 0; j < i; j++){
 
                 // only valid if strictly increasing
@@ -100,7 +100,7 @@ public:
             result = max(result, dp[i]);
         }
         return result;
-    
+  
     }
 };
 ```

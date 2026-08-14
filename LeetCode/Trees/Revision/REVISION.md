@@ -13,6 +13,7 @@
 **Where it shows up:** as the skeleton of literally everything else in this document. Also directly, when a problem needs a specific output order, and — critically — when the tree is a BST, because **inorder on a BST comes out sorted.** That one fact turns several BST problems into array problems.
 
 **Inorder / Preorder / Postorder** — the same recursion, the visit line moved.
+
 ```cpp
 if (node == nullptr){
     return;
@@ -23,12 +24,14 @@ helper(answer, node->left);
 answer.push_back(node->val);
 helper(answer, node->right);
 ```
+
 ```cpp
 // root - left - right
 answer.push_back(node->val);
 helper(answer, node->left);
 helper(answer, node->right);
 ```
+
 ```cpp
 // left - right - root
 helper(answer, node->left);
@@ -40,6 +43,7 @@ answer.push_back(node->val);
 - **Space:** `O(h)` — h = height of tree, the recursion stack; `O(n)` on a skewed tree.
 
 **Postorder, iterative** — the hard one of the three, and the reason is worth knowing. Postorder needs to visit a node *after* its right subtree, so when you come back up to a node you have to be able to tell "have I already done your right side?" The `lastvisited` pointer is that memory. Without it you descend right, come back, see a right child again, and loop forever.
+
 ```cpp
 while (!st.empty() || current != nullptr){
 
@@ -66,7 +70,7 @@ while (!st.empty() || current != nullptr){
 
     else{
         result.push_back(peek -> val);
-        lastvisited = st.top(); // (can also be <peek> itself) we are doing this bcoz once printed - we dont want the parent to come again this path
+        lastvisited = peek; // (can also be st.top() itself) we are doing this bcoz once printed - we dont want the parent to come again this path
 
 
 // THIS ALSO GETS CHECKED IN CASE 2.1 -- where we are checking if the right node that you are talking about is not the one already done - or else it would be an infinite loop (process right child - comebackup - "OOHH we still have a right child" :DUMB:)
@@ -80,6 +84,7 @@ while (!st.empty() || current != nullptr){
 - **Space:** `O(h)` — explicit stack holds one root-to-node path at a time.
 
 **Kth Smallest in BST** — iterative inorder with an early exit. The twist is that there's no clever algorithm here at all; the insight is the one-liner the file opens with, that inorder on a BST *is* sorted order, so you just count off k nodes and stop. Simpler than postorder because there's no come-back-to-me case: once you pop a node you're immediately done with it and move right.
+
 ```cpp
 while (current != nullptr || !st.empty()){
 
@@ -119,6 +124,7 @@ while (current != nullptr || !st.empty()){
 **Where it shows up:** heights, depths, sizes, counts, and any yes/no property that is true for a node exactly when it's true for both children. If you can phrase the question as "what does my left subtree tell me and what does my right subtree tell me," you're here.
 
 **Maximum Depth** — the archetype. Two calls, take the max, add one for yourself.
+
 ```cpp
 // we need to do comparison with maxes at EACH NODE
 
@@ -137,6 +143,7 @@ return max(left, right);
 - **Space:** `O(h)` — h = height, recursion stack depth.
 
 **Balanced Binary Tree** — worth flagging honestly: **this version is the brute force.** It computes `height()` from scratch at every node, so the height work is redone all the way down and you pay `O(n²)` on a skewed tree. The optimal fuses the two recursions — have `height()` return `-1` as a poison value the moment it detects imbalance, and the whole check becomes a single pass. Interviewers ask for that fusion specifically, so know that this is the version to *start* from and improve.
+
 ```cpp
 // base case
 if (root == nullptr) return true;
@@ -163,6 +170,7 @@ return ( check_left && check_right );
 - **Space:** `O(h)` — h = height, recursion stack.
 
 **Construct Quad Tree** — the same upward flow, except what comes back up is a *node* rather than a number. Every call builds its own node unconditionally and only attaches children if the region turned out to be mixed. The twist is that `verify` returns a `pair<bool,bool>` — value and is-leaf together — because a single bool can't distinguish "all ones" from "not uniform."
+
 ```cpp
 auto pair = verify(grid, row1, row2, col1, col2);
 bool val = pair.first;
@@ -202,6 +210,7 @@ return node;
 **Where it shows up:** validation against ancestors, "compared to everything above me" questions, and BST descent where the value you're looking for tells you which way to go. If a naive local check gives the wrong answer on a deep counterexample, you need to be carrying state down.
 
 **Validate BST** — the range tightens on the way down: going left caps the ceiling at the parent, going right raises the floor. The practitioner's detail is `long` for the bounds — with `int`, a node legitimately holding `INT_MIN` collides with your sentinel and gets rejected.
+
 ```cpp
 // base case --> empty tree is valid
 if(node == nullptr) return true;
@@ -220,6 +229,7 @@ return dfs(node -> left, low, node -> val) && dfs(node -> right, node -> val, hi
 - **Space:** `O(h)` — h = height, recursion stack.
 
 **Count Good Nodes** — a hybrid, and a good one to understand: `curr_max` travels **down** (each child gets its ancestors' maximum) while `count` is summed **up** from the children. Two directions in one function. Your own note flags the alternative — a reference-passed global counter — which trades the summing-up channel for a side-channel, landing you in pattern 4.
+
 ```cpp
 // base case
 if(node == nullptr) return 0;
@@ -255,6 +265,7 @@ return count;
 **Where it shows up:** diameter, maximum path sum, longest univalue path, largest BST subtree — anything phrased as "the best X *anywhere* in the tree," where the best answer might live entirely inside a subtree and never involve the root. And in a different guise, any traversal where arrival order itself is the information.
 
 **Diameter of Binary Tree** — the canonical two-channel function. Note it returns `1 + max(left, right)` and never returns `global_max` at all.
+
 ```cpp
 // base case
 if (node == nullptr){
@@ -276,6 +287,7 @@ return 1 + max(left, right);
 - **Space:** `O(h)` — h = height, recursion stack; `global_max` is a single int.
 
 **Right Side View** — the side-channel is `max_height`, and the clever part is that the *traversal order* carries the logic. Go right before left, and the first node you ever reach at a new depth is by definition the rightmost one at that depth. No level-order machinery needed; the ordering does the work. Most people solve this with BFS — solving it with DFS and explaining why right-first is sufficient is the better answer.
+
 ```cpp
 curr_height += 1; // increment height as this is a new node
 
@@ -304,6 +316,7 @@ if(root -> left != nullptr) dfs(root -> left, result, curr_height, max_height);
 **Where it shows up:** level-order output, "nodes at each depth," minimum depth (BFS finds it first and you stop), zigzag order, and any question where the answer is per-level rather than per-node.
 
 **Level Order Traversal** — snapshot, drain exactly that many, push children as you go.
+
 ```cpp
 q.push(root);
 
@@ -343,6 +356,7 @@ while (!q.empty()){
 **Where it shows up:** same tree, symmetric tree (the mirror variant, where you pair left-with-right instead), subtree checks, and merging two trees.
 
 **Same Tree** — three base cases in a deliberate order, then descend both trees together.
+
 ```cpp
 // ------ BASE CASES ------
 
@@ -370,6 +384,7 @@ return (isSameTree( p -> left, q -> left) && isSameTree( p -> right, q -> right)
 - **Space:** `O(min(h1, h2))` — recursion depth, bounded by the shallower tree.
 
 **Subtree of Another Tree** — `same_tree` wrapped in a traversal. At every node of the big tree you ask "does a full match start here?" The OR is the counterpart to the AND above: a match anywhere is enough.
+
 ```cpp
 if(root == nullptr) return false;
 
@@ -387,6 +402,7 @@ return (preorder(root -> left, subroot) || preorder(root -> right, subroot) );
 ```
 
 The optimal version is a different idea entirely — serialize both trees into strings and ask whether one contains the other, turning a tree problem into substring search. The detail that makes it correct is the `N` null marker: without markers, two differently-shaped trees can serialize identically, and you'd report a match that isn't there.
+
 ```cpp
 if (!node) return "N";
 return "(" + to_string(node->val) + "," + serialize(node->left) + "," + serialize(node->right) + ")";
@@ -406,6 +422,7 @@ return "(" + to_string(node->val) + "," + serialize(node->left) + "," + serializ
 **Where it shows up:** search, insert, delete, LCA, floor/ceiling, and range queries on BSTs — plus in-place restructuring like inverting a tree.
 
 **Lowest Common Ancestor — general binary tree.** No ordering to exploit, so recurse both sides and read the returns: two non-null answers means the two targets split here, and this node is the meeting point.
+
 ```cpp
 // base case
 if (root == NULL || root == p || root == q){
@@ -437,6 +454,7 @@ else{
 ```
 
 **Lowest Common Ancestor — BST.** Same problem, but one comparison per node picks a single direction. The `else` branch is the answer: the moment the current value sits between the two targets, they've split, and you're standing on the LCA.
+
 ```cpp
 if (root == NULL) return NULL;
 
@@ -471,6 +489,7 @@ else{
 - **Space:** `O(h)` — recursion stack in both versions.
 
 **Insert into a BST** — descends by comparison, but with a look-ahead: it checks whether the next node exists *before* recursing, so it stops standing on the leaf and can attach the new node. Your note names the reason exactly — recurse into the null and you've lost the parent you needed to link to.
+
 ```cpp
 // we can traverse --> hence leaf node not reached
 
@@ -497,6 +516,7 @@ else{
 - **Space:** `O(h)` — recursion stack; `O(1)` if written as a loop.
 
 **Delete from a BST** — the hardest one here, and the mechanism is the thing to remember. Everything is passed as `TreeNode*&` — a **reference to a pointer** — so assigning `node = node->left` inside the function rewires the *parent's* child pointer directly. That's what removes the usual "return the new subtree and reattach it at every call site" boilerplate. The deletion strategy itself: replace the node's value with its inorder successor, then delete the successor — which is easy, because a successor is the leftmost node of the right subtree and therefore has no left child, so splicing in its right subtree (possibly null) always works.
+
 ```cpp
 int successor(TreeNode*& root){
 
@@ -516,6 +536,7 @@ int successor(TreeNode*& root){
     return succ;
 }
 ```
+
 ```cpp
 // 2 --> if match
 if(node -> val == key){
@@ -557,6 +578,7 @@ else{
 - **Space:** `O(h)` — recursion stack.
 
 **Invert Binary Tree** — mutation without any BST ordering involved. Your own note records the wrong turn worth remembering: the instinct is to swap *values* across two parallel recursions, and the two call stacks have no way to talk to each other. Swapping the **links** at each node makes the problem trivially local.
+
 ```cpp
 // 1. base case
 

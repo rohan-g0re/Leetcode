@@ -56,7 +56,6 @@ public:
             switch_dummy = mover -> next;
         }
 
-
         // 2. reverse from left to right
 
         int total_nodes = right - left + 1;
@@ -83,11 +82,8 @@ public:
             return head;
         }
 
-
         // return prev if left chain empty
         return prev;
-
-      
     }
 };
 ```

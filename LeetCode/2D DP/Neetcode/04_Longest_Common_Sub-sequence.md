@@ -97,7 +97,7 @@ public:
 
 ## NEW LEARNING --> SHIFTING INDEX TO MAKE OUR PREVIOUS BASE CASE LOGICS WORK
 
-#### HOW DID WE CONVERT MEMO --> TABULATION?
+#### HOW DO WE CONVERT MEMO --> TABULATION?
 
 - in memo, base was index < 0 --> return 0 --> BUT arrays cannot have -1 index
 - so we SHIFT everything by +1:
@@ -122,9 +122,9 @@ public:
 
         for (int index1 = 1; index1 < m + 1; index1++){
             for (int index2 = 1; index2 < n + 1; index2++){
-          
+        
                 // MATCH
-                if (text1[index1 - 1] == text2[index2 - 1]){      
+                if (text1[index1 - 1] == text2[index2 - 1]){    
                     dp_table[index1][index2] = 1 + dp_table[index1 - 1][index2 - 1];
                 }
 
