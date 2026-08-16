@@ -1,4 +1,4 @@
-# Leetcode 1757
+# LC 1757 - Easy
 
 1. using simple select
 
