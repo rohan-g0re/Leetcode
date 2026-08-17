@@ -83,3 +83,26 @@ GROUP BY DIFF_TABLE.machine_id;
 
 # Learnings:
 - **EVERY DERIVED TABLE NEEDS AN ALIAS** --> hence the intermediate table created by subquery needs an alias as well - And everything outside the subquery will reference that table with that alias --> over here its 'DIFF_TABLE'.
+
+
+
+# Attempt 4: Final Optimization --> JOINING basically did the grouping - so dont need subquery
+
+- hence i remove the subquery group by 
+- hence no need of subquery --> As I did that because I could not do a double group by
+
+```sql
+
+
+SELECT 
+    s.machine_id, 
+    ROUND(AVG(e.timestamp - s.timestamp), 3) AS processing_time
+
+FROM Activity s
+JOIN Activity e ON (s.machine_id, s.process_id) = (e.machine_id, e.process_id)
+where s.activity_type = 'start' AND e.activity_type = 'end'
+
+GROUP BY s.machine_id;
+
+
+```
