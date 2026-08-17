@@ -1,0 +1,15 @@
+# Language statistics overrides for GitHub Linguist.
+#
+# The solution write-ups in these folders are Markdown files whose substance is
+# fenced code. Linguist classifies one language per file and never looks inside
+# fences, so by default all of that code is invisible in the repository's
+# language bar. These rules reclassify those files by the language they teach.
+#
+# This affects language statistics, source-view syntax highlighting, and diff
+# colouring only. It does NOT affect Markdown rendering, which GitHub keys on
+# the .md extension via github/markup. The files still render as Markdown.
+
+LeetCode/**/*.md  linguist-language=C++ linguist-detectable=true
+Domain/**/*.md    linguist-language=C++ linguist-detectable=true
+Companies/**/*.md linguist-language=C++ linguist-detectable=true
+SQL/*.md          linguist-language=SQL linguist-detectable=true
