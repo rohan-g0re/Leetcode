@@ -30,7 +30,7 @@ back.
 """
 
 
-def describe_type(value):
+def describe_type(value) -> str:
     """Take any value and hand back the name of its type, as lowercase text.
 
     So given the number 5 you return the string "int", and given None you return
@@ -60,6 +60,9 @@ def describe_type(value):
     Once you have the name, remember the examples above are all lowercase.
     """
     # TODO
+
+    return type(value).__name__.lower()
+
     raise NotImplementedError
 
 
@@ -90,6 +93,11 @@ def safe_divide(numerator, denominator):
     even, which is why the third example is 0.0 rather than 0.
     """
     # TODO
+
+    if(denominator == 0):
+        return None
+    else: return numerator / denominator
+
     raise NotImplementedError
 
 
@@ -127,6 +135,10 @@ def is_missing(value):
     something that merely behaves like them, so return them explicitly.
     """
     # TODO
+
+    if value: return True
+    else: return False
+
     raise NotImplementedError
 
 
@@ -179,6 +191,10 @@ def coerce_number(value):
     shapes of text you actually need to allow.
     """
     # TODO
+
+    if(type(value) is int): return float(value)
+    else: return None
+
     raise NotImplementedError
 
 
@@ -214,6 +230,9 @@ def bucket(n, size):
     before any arithmetic happens.
     """
     # TODO
+
+    return (n % size)
+
     raise NotImplementedError
 
 
@@ -248,6 +267,13 @@ def percent_change(old, new):
     the number of decimal places second.
     """
     # TODO
+
+    change = new - old
+
+    if(change == 0): return None
+    else:
+        return (change // old) * 100 
+
     raise NotImplementedError
 
 
@@ -280,6 +306,8 @@ def clamp(value, low, high):
     case and the too-high case at the same time.
     """
     # TODO
+
+    return min(max(value, low), high)
     raise NotImplementedError
 
 
@@ -319,6 +347,10 @@ def format_summary(name, count, average):
     text first, store it in a variable, and then build one f-string from it.
     """
     # TODO
+
+    if(average is None): return f"{name}: {count} items, avg n/a"
+    else: return f"{name}: {count} items, avg {average:.2f}"
+
     raise NotImplementedError
 
 

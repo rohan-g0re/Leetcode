@@ -225,12 +225,12 @@ That gap — declared types that nothing enforces — is precisely the hole Pyda
 
 Before going further, let me say the thing a Python tutorial usually won't.
 
-| Reach for a dict when | Reach for a class or dataclass when |
-|---|---|
-| The shape comes straight out of JSON | You've defined a stable internal shape yourself |
-| Different records carry different keys | Every instance has the same fields |
-| You're handing it to pandas or `json.dumps` | You want behaviour attached to the data |
-| It's a throwaway intermediate step | It's a concept used in several places |
+| Reach for a dict when                        | Reach for a class or dataclass when             |
+| -------------------------------------------- | ----------------------------------------------- |
+| The shape comes straight out of JSON         | You've defined a stable internal shape yourself |
+| Different records carry different keys       | Every instance has the same fields              |
+| You're handing it to pandas or`json.dumps` | You want behaviour attached to the data         |
+| It's a throwaway intermediate step           | It's a concept used in several places           |
 
 **For an interview data task, a dict is usually the right answer.** It's what `json.loads` hands you, it's what pandas eats, it's what you can print and inspect without ceremony, and it costs you nothing to create. Wrapping API data in classes because classes feel more professional is a way to spend ten minutes producing less capability than you started with.
 

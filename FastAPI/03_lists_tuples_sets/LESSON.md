@@ -273,13 +273,13 @@ The set does the fast "have I seen this" checking; the list preserves the order.
 
 ## 8. Which one do I use?
 
-| What you need | Reach for |
-|---|---|
-| Records in order, that will grow | `list` |
-| A fixed-shape record, or a dictionary key | `tuple` |
-| Membership tests, deduplication, overlap questions | `set` |
-| Looking something up by name or ID | `dict` (unit 04) |
-| Counts per category | `Counter` (unit 16) |
+| What you need                                      | Reach for             |
+| -------------------------------------------------- | --------------------- |
+| Records in order, that will grow                   | `list`              |
+| A fixed-shape record, or a dictionary key          | `tuple`             |
+| Membership tests, deduplication, overlap questions | `set`               |
+| Looking something up by name or ID                 | `dict` (unit 04)    |
+| Counts per category                                | `Counter` (unit 16) |
 
 And the performance summary in one sentence: checking membership in a list scans it item by item, while checking membership in a set or a dictionary is instant regardless of size. At ten thousand items inside a loop, that's the difference between a program that finishes and one you kill.
 
