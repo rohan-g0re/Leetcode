@@ -86,3 +86,24 @@ public:
     }
 };
 ```
+
+# Python Code
+
+## Approach 1: Using Map
+
+```python
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+
+        if(len(s) != len(t)): return False
+
+        mp = {}
+        for a, b in zip(s, t):
+            mp[a] = mp.get(a, 0) + 1
+            mp[b] = mp.get(b, 0) - 1
+        
+        for k in mp:
+            if(mp[k] != 0): return False
+
+        return True
+```
