@@ -47,3 +47,24 @@ public:
     }
 };
 ```
+
+# Python Code
+
+## Approach 1: Using Map
+
+```python
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        
+        mp = {}
+
+        for i in range (0, len(nums)):
+            diff = target - nums[i]
+
+            # instead of checking if mp[diff] is present --> I can jut check whether key is present in map
+            if diff in mp:
+                return [i, mp[diff]]
+            
+            # push in map
+            mp[nums[i]] = i
+```
