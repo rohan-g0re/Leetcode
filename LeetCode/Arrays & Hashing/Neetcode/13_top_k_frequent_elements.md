@@ -116,3 +116,35 @@ public:
 
 - Time complexity: O(n)
 - Space complexity: O(n)
+
+# Python Code
+
+## Approach 1:
+
+VERY IMPORTANT --> In other editors we might need to write `heapq.heappush()` and `heapq.heappop()`. 
+
+push in freqmap 
+take them an push in MIN-heap
+fill the result list
+[ <EXPRESSION> for <VARIABLE(S)> in <ITERABLE> ]
+
+```python
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        
+        mp = {}
+
+        for num in nums:
+            mp[num] = mp.get(num, 0) + 1
+        
+
+        heap = []
+        for num, freq in mp.items():
+            heappush(heap, (freq, num))
+
+            if len(heap) > k:
+                heappop(heap)
+
+
+        return [pair[1] for pair in heap]
+```
