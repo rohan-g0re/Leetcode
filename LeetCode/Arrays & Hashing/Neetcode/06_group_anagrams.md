@@ -46,3 +46,27 @@ public:
     }
 };
 ```
+
+# Python Code
+
+## Approach 1:
+
+this acts as a default for list being the value
+join the sorted list back into a string
+create result array
+
+```python
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        mp = defaultdict(list)
+
+        for s in strs:
+            key = ''.join(sorted(s))
+            mp[key].append(s)
+
+        result = []
+        for v in mp.values():
+            result.append(v)
+
+        return result
+```
