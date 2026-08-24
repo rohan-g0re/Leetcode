@@ -55,15 +55,11 @@ public:
 
 # Python Code
 
-## Approach 1: Carry the result prefix
+## Approach 1:
 
-1. set a string as result
-2. compare it letter by letter with each string
-3. if mismatch --> set the successful/slice as result string
-
-- run the inner loop for at max smallest length
-- we update the bool if result is changed --> if result did not change this means that "string s was prefix of result" in which case we still need to shrink the result
-- if prefix we need to set only the relevant length as result
+set a string as result
+compare it letter by letter with each string
+if mismatch --> set the successful/slice as result string
 
 ```python
 class Solution:
