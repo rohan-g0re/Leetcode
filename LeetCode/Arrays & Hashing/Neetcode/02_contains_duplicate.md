@@ -75,3 +75,39 @@ public:
     }
 };
 ```
+
+# Python Code
+
+```python
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+
+        mp = {}
+        for num in nums:
+            mp[num] = mp.get(num, 0) + 1
+
+        for key in mp:
+            if mp[key] > 1: return True
+
+        return False
+```
+
+```python
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        if (len(nums)) == 1: return False
+
+        nums.sort()
+
+        for i in range (1, len(nums)):
+            if (nums[i] == nums [i-1]): return True
+
+        return False
+```
+
+```python
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        if(len(set(nums)) != len(nums)): return True
+        return False
+```
