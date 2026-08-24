@@ -78,6 +78,8 @@ public:
 
 # Python Code
 
+## Approach 1: Using Map
+
 ```python
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
@@ -92,6 +94,8 @@ class Solution:
         return False
 ```
 
+## Approach 2: Using Sort
+
 ```python
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
@@ -104,6 +108,8 @@ class Solution:
 
         return False
 ```
+
+## Approach 3: Using Set
 
 ```python
 class Solution:

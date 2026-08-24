@@ -52,3 +52,36 @@ public:
 };
 
 ```
+
+# Python Code
+
+## Approach 1: Carry the result prefix
+
+1. set a string as result
+2. compare it letter by letter with each string
+3. if mismatch --> set the successful/slice as result string
+
+- run the inner loop for at max smallest length
+- we update the bool if result is changed --> if result did not change this means that "string s was prefix of result" in which case we still need to shrink the result
+- if prefix we need to set only the relevant length as result
+
+```python
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        
+        result = strs[0]
+
+        for s in strs:
+
+            change = False
+
+            for i in range (min(len(s), len(result))):
+                if(s[i] != result[i]):
+                    result = s[:i]
+                    change = True
+                    break
+            
+            if(change == False): result = s[:min(len(s), len(result))]
+
+        return result
+```

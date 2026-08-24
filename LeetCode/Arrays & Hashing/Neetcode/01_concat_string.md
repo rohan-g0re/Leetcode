@@ -23,12 +23,16 @@ public:
 
 # Python Code
 
+## Approach 1: Using Extend
+
 ```python
 class Solution:
     def getConcatenation(self, nums: List[int]) -> List[int]:
         nums.extend(nums)
         return nums
 ```
+
+## Approach 2: Using Concatenation
 
 ```python
 class Solution:
