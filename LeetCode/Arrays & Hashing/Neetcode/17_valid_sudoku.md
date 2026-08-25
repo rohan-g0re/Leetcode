@@ -33,7 +33,7 @@ public:
                 pair <int, int> square_key = {row / 3, col / 3};
 
                 // we fid if we have duplicate in any of the 3 sets
-            
+          
                 if (rows[row].find(board[row][col]) != rows[row].end() || 
                 cols[col].find(board[row][col]) != cols[col].end() ||
                 squares[square_key].find(board[row][col]) != squares[square_key].end()
@@ -48,7 +48,7 @@ public:
 
             }
         }
-        return true;    
+        return true;  
     }
 };
 ```
@@ -63,7 +63,7 @@ public:
 [EXPRESSION for VARIABLE(S) in ITERABLE]
 
 base case --> '.'
-calculate the square key 
+calculate the square key
 tuple
 PRESENT --> check in all 3 maps
 ABSENT --> add
@@ -90,6 +90,6 @@ class Solution:
                 cols[col].add(val)
                 squares[square_key].add(val)
 
-        
+      
         return True
 ```
