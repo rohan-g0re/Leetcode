@@ -33,7 +33,7 @@ public:
                 pair <int, int> square_key = {row / 3, col / 3};
 
                 // we fid if we have duplicate in any of the 3 sets
-              
+            
                 if (rows[row].find(board[row][col]) != rows[row].end() || 
                 cols[col].find(board[row][col]) != cols[col].end() ||
                 squares[square_key].find(board[row][col]) != squares[square_key].end()
@@ -48,7 +48,48 @@ public:
 
             }
         }
-        return true;      
+        return true;    
     }
 };
+```
+
+# Python Code
+
+## Approach 1:
+
+3 maps
+1 & 2 --> int, set
+3 --> tuple, set
+[EXPRESSION for VARIABLE(S) in ITERABLE]
+
+base case --> '.'
+calculate the square key 
+tuple
+PRESENT --> check in all 3 maps
+ABSENT --> add
+
+```python
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        rows = defaultdict(set)
+        cols = defaultdict(set)
+        squares = defaultdict(set)
+
+
+        for row in range(0, 9):
+            for col in range (0, 9):
+
+                if (board[row][col] == "."): continue
+
+                square_key = (row // 3, col //3)
+                val = board[row][col]
+
+                if(val in rows[row] or val in cols[col] or val in squares[square_key]): return False
+
+                rows[row].add(val)
+                cols[col].add(val)
+                squares[square_key].add(val)
+
+        
+        return True
 ```

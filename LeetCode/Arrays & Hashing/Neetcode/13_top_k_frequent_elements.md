@@ -25,7 +25,7 @@ public:
             map[num]++;
         }
 
-      
+    
         priority_queue<pair<int, int>, 
         vector<pair<int, int>>,
         greater<pair<int, int>>
@@ -38,7 +38,7 @@ public:
         // freq should be first in min_heap - bcoz heap compares first value of pair for restructuring heap
 
         for (auto& pair : map){
-          
+        
             min_heap.push({pair.second, pair.first});
 
             if (min_heap.size() > k){
@@ -87,9 +87,9 @@ public:
             count[n] = 1 + count[n];
         }
 
-      
-      
-      
+    
+    
+    
         // ----------- IMPORTANT LOGIC ----------- 
         for (const auto& entry : count) {
             freq[entry.second].push_back(entry.first);
@@ -121,22 +121,22 @@ public:
 
 ## Approach 1:
 
-VERY IMPORTANT --> In other editors we might need to write `heapq.heappush()` and `heapq.heappop()`. 
+VERY IMPORTANT --> In other editors we might need to write `heapq.heappush()` and `heapq.heappop()`.
 
-push in freqmap 
+push in freqmap
 take them an push in MIN-heap
 fill the result list
-[ <EXPRESSION> for <VARIABLE(S)> in <ITERABLE> ]
+# IMPORTANT: list comprehension template --> [EXPRESSION for VARIABLE(S) in ITERABLE]
 
 ```python
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        
+      
         mp = {}
 
         for num in nums:
             mp[num] = mp.get(num, 0) + 1
-        
+      
 
         heap = []
         for num, freq in mp.items():

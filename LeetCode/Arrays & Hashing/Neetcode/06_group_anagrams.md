@@ -25,7 +25,7 @@ public:
         for (auto& string_i : strs){
             string sortedkey = string_i;
             sort(sortedkey.begin(), sortedkey.end());
-        
+      
             // this will make thekey value pair as (aet, ate)
             map[sortedkey].push_back(string_i);
 
