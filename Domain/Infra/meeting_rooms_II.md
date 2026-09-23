@@ -1,11 +1,12 @@
 # LC 253 - Medium
 
 ## Intuition:
+
 1. Total rooms being used is the current size of the heap.
 2. There are only 2 ways to get a room:
-    1. REUSE A MEETING ROOM - if the meeting in it has ended --> pop it oput of heap and push our new meeting slot 
-        --> heap size stays the same -- this is the equivalent of reusing room 
-    2. USE A NEW ROOM --> this will increase the size 
+   1. REUSE A MEETING ROOM - if the meeting in it has ended --> pop it oput of heap and push our new meeting slot
+      --> heap size stays the same -- this is the equivalent of reusing room
+   2. USE A NEW ROOM --> this will increase the size
 
 #### This procedure in itself is the only optimal way of maximizing the use of rooms --> Hence, this is GREEDY & OPTIMAL.
 
@@ -18,18 +19,21 @@ sort(intervals.begin(), intervals.end(), [](Interval& a, Interval& b){
 ```
 
 ### 1. Why empty `[]` ?
+
 - `[]` = **capture list** --> how the lambda pulls variables from **outside**
 - example: `[&cap]` or `[cap]` would bring an outside variable `cap` into the lambda
 - here `[]` is empty --> we capture **nothing**
 - we dont need outside values --> because `a` and `b` are already passed **as arguments**
 
 ### 2. What scope are `a` and `b` ?
+
 - NOT the whole array as one object
 - `sort` picks **two individual `Interval` objects** from the vector and hands them to the comparator
 - that is why we have two params: `Interval& a` and `Interval& b`
 - each call = compare one pair of meetings
 
 ### 3. Why compare `start` ?
+
 - we want meetings processed in **start-time order**
 - greedy needs earliest-starting meeting first --> so we can decide reuse vs new room correctly
 - `return a.start < b.start` --> **Does a rank before b?** --> yes if a starts earlier
@@ -39,10 +43,12 @@ sort(intervals.begin(), intervals.end(), [](Interval& a, Interval& b){
 ### WHY `meet -> start` IS WRONG HERE
 
 You wrote `meet -> start` thinking like LL:
+
 - LL: `ListNode* mover` --> pointer --> so `mover -> val`, `mover -> next` is correct
 - here: `for(auto& meet : intervals)` --> `meet` is a **reference to an Interval object** (a value), NOT a pointer
 
 #### THE RULE
+
 - **pointer** (`Interval*` / `Node*`) --> use `->`
 - **object / reference** (`Interval` / `Interval&`) --> use `.`
 
@@ -60,17 +66,12 @@ Yes — `val` and `next` are fields either way. The arrow is **not** about "gett
 - so you dereference + access field in one step: `pointer -> field`
 - `meet` here is already the Interval itself (via `&`) --> no dereference needed --> `meet.start`
 
-
-
 ## SHORT MENTAL MODEL
+
 - `->` means: "I have an **address**, go there, then read the field"
 - `.` means: "I already have the **object**, just read the field"
 
 `meet -> start` fails because `meet` is not an address.
-
-
-
-
 
 # Code:
 
@@ -91,7 +92,7 @@ Yes — `val` and `next` are fields either way. The arrow is **not** about "gett
 class Solution {
 public:
     int minMeetingRooms(vector<Interval>& intervals) {
-        
+      
 
         sort(intervals.begin(), intervals.end(), [](Interval& a, Interval& b){
             return a.start < b.start;
@@ -104,7 +105,7 @@ public:
         int result = 0;
 
         for(auto& meet : intervals){
-            
+          
             // if we can reuse the room we make it empty
             if(!min_heap.empty() && min_heap.top() <= meet.start){
                 min_heap.pop();
@@ -115,8 +116,7 @@ public:
 
             result = max(result, (int)min_heap.size());
         }
-        return result;      
+        return result;    
     }
 };
-
 ```
